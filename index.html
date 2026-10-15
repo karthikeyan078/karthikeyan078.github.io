@@ -1,0 +1,3197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Karthi (Karthikeyan R V) | Game Developer – Unreal Engine Gameplay Programmer</title>
+<meta name="description" content="Karthi (Karthikeyan R V) is a game developer and Unreal Engine gameplay programmer in Bangalore, India, building gameplay systems, VR applications and AI using UE5, C++ and Blueprints." />
+<meta name="author" content="Karthikeyan R V (Karthi)" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://karthikeyan078.github.io/DevPortfolio/" />
+
+<!-- Favicon -->
+<link rel="icon" href="Images/Hero/Favicon/Karthi%20favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="Images/Hero/Favicon/Karthi%20favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="Images/Hero/Favicon/Karthi%20favicon-16x16.png" />
+
+<!-- Link previews (LinkedIn, WhatsApp, X, etc.) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Karthi – Game Developer" />
+<meta property="og:title" content="Karthi (Karthikeyan R V) | Game Developer – Unreal Engine" />
+<meta property="og:description" content="Unreal Engine gameplay programmer building gameplay systems, VR applications and AI with UE5, C++ and Blueprints." />
+<meta property="og:url" content="https://karthikeyan078.github.io/DevPortfolio/" />
+<meta property="og:image" content="https://karthikeyan078.github.io/DevPortfolio/Images/Hero/Karthi_Casual.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Karthi (Karthikeyan R V) | Game Developer – Unreal Engine" />
+<meta name="twitter:description" content="Unreal Engine gameplay programmer building gameplay systems, VR applications and AI with UE5, C++ and Blueprints." />
+<meta name="twitter:image" content="https://karthikeyan078.github.io/DevPortfolio/Images/Hero/Karthi_Casual.png" />
+
+<!-- Tells Google who this site is about -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Karthikeyan R V",
+  "alternateName": ["Karthi", "Karthikeyan RV", "Karthi RV"],
+  "jobTitle": "Game Developer – Unreal Engine Gameplay Programmer",
+  "description": "Game developer and Unreal Engine gameplay programmer building gameplay systems, VR applications and AI with UE5, C++ and Blueprints.",
+  "url": "https://karthikeyan078.github.io/DevPortfolio/",
+  "image": "https://karthikeyan078.github.io/DevPortfolio/Images/Hero/Karthi_Casual.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sona College of Technology" },
+  "worksFor": { "@type": "Organization", "name": "Sona Star Innovation Private Limited" },
+  "knowsAbout": ["Game Development", "Unreal Engine 5", "Gameplay Programming", "C++", "Blueprint Visual Scripting", "VR Development", "Game AI"],
+  "sameAs": [
+    "https://github.com/karthikeyan078",
+    "https://www.linkedin.com/in/karthikeyan078/"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Galdien is a licensed font (craftsupply.co) — the free download is demo/personal-use
+     only, so it can't be embedded here automatically. Drop your licensed .woff2 files in
+     a /fonts folder and this @font-face will pick them up; until then the design falls
+     back to Manrope, which has a similar clean, modern-sans-serif shape. */
+  @font-face{
+    font-family:'Galdien';
+    src:url('fonts/Galdien-Regular.woff2') format('woff2');
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Galdien';
+    src:url('fonts/Galdien-Bold.woff2') format('woff2');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+</style>
+<style>
+  :root{
+    --black:#070707;
+    --navy:#111111;
+    --navy-2:#161616;
+    --purple:#e4e4e4;
+    --purple-dim:#a3a3a3;
+    --blue:#c2c2c2;
+    --cyan:#ffffff;
+    --white:#f3f3f3;
+    --muted:#8a8a8a;
+    --line:rgba(255,255,255,0.1);
+    --glass:rgba(20,20,20,0.55);
+    --font-display:'Galdien','Manrope', sans-serif;
+    --font-body:'Galdien','Manrope', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  ::selection{background:var(--purple);color:#fff;}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+    cursor:none;
+  }
+  @media (max-width:900px){ body{cursor:auto;} }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  section{position:relative;z-index:1;}
+
+  /* background ambient grid */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 90%);
+  }
+
+  /* preloader */
+  #preloader{
+    position:fixed;inset:0;z-index:9999;background:var(--black);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  #preloader.hide{opacity:0;visibility:hidden;}
+  .pl-core{width:64px;height:64px;border:1.5px solid var(--purple);border-top-color:var(--cyan);
+    border-radius:50%;animation:spin 1.1s linear infinite;}
+  .pl-text{margin-top:22px;font-family:var(--font-mono);font-size:11px;letter-spacing:.35em;color:var(--muted);text-transform:uppercase;}
+  .pl-percent{margin-top:6px;font-family:var(--font-mono);font-size:22px;color:var(--white);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* custom cursor */
+  #cursor{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--cyan);
+    pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+  #cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.6);
+    pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:transform .15s ease-out, width .25s, height .25s, opacity .25s;}
+  @media (max-width:900px){ #cursor,#cursor-ring{display:none;} }
+
+  /* scroll progress */
+  #scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));z-index:9996;width:0%;}
+
+  /* hero */
+  #hero{height:100svh;position:relative;display:flex;align-items:center;overflow:hidden;}
+  #hero-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .hero-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse 60% 60% at 50% 45%, transparent 0%, rgba(4,5,8,.4) 70%, var(--black) 100%);}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 32px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:44px;} }
+  .hero-photo-wrap{position:relative;opacity:0;animation:riseIn 1s .5s ease forwards;justify-self:center;}
+  @media (max-width:900px){ .hero-photo-wrap{order:-1;justify-self:center;width:min(70vw,300px);} }
+  .hud-frame{position:relative;width:300px;aspect-ratio:3/4;border:1px solid var(--line);border-radius:4px;
+    background:linear-gradient(155deg,var(--navy-2),var(--navy));overflow:hidden;}
+  @media (max-width:900px){ .hud-frame{width:100%;} }
+  .hud-frame .photo-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-family:var(--font-mono);font-size:11px;text-align:center;padding:20px;letter-spacing:.05em;}
+  .hud-frame img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .hud-frame::before{content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(180deg, rgba(255,255,255,.03) 0 2px, transparent 2px 4px);pointer-events:none;}
+  .hud-frame::after{content:'';position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+    animation:scanY 3.2s linear infinite;pointer-events:none;}
+  @keyframes scanY{0%{top:0;}100%{top:100%;}}
+  .hud-corner{position:absolute;width:22px;height:22px;border-color:var(--white);border-style:solid;border-width:0;opacity:.8;}
+  .hud-corner.tl{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px;}
+  .hud-corner.tr{top:-1px;right:-1px;border-top-width:2px;border-right-width:2px;}
+  .hud-corner.bl{bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px;}
+  .hud-corner.br{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px;}
+  .hud-tag{position:absolute;top:14px;left:14px;font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;
+    color:var(--muted);background:rgba(0,0,0,.5);padding:4px 8px;border:1px solid var(--line);border-radius:3px;
+    display:flex;align-items:center;gap:6px;text-transform:uppercase;}
+  .hud-tag .dot{width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;animation:pulseDot 1.6s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .hud-id{position:absolute;bottom:14px;left:14px;right:14px;font-family:var(--font-mono);font-size:9px;color:var(--muted);
+    display:flex;justify-content:space-between;letter-spacing:.05em;}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.3em;color:var(--cyan);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;opacity:0;animation:riseIn .8s .2s ease forwards;}
+  .eyebrow::before{content:'';width:26px;height:1px;background:var(--cyan);}
+  .hero-title{font-family:var(--font-display);font-weight:300;font-size: clamp(1.8rem, 4vw, 3.5rem);line-height:1.02;letter-spacing:-.02em;
+    opacity:0;animation:riseIn .9s .35s ease forwards;}
+  .hero-title .accent{background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-role{margin-top:18px;font-family:var(--font-mono);font-size:clamp(1rem,2.4vw,1.4rem);color:var(--muted);height:1.6em;
+    opacity:0;animation:riseIn .9s .5s ease forwards;}
+  .hero-role #typed{color:var(--white);}
+  .hero-role .cursor-blink{display:inline-block;width:2px;height:1em;background:var(--cyan);vertical-align:-.15em;animation:blink 1s steps(1) infinite;margin-left:2px;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero-sub{margin-top:24px;max-width:520px;color:var(--muted);font-size:1rem;line-height:1.7;
+    opacity:0;animation:riseIn .9s .65s ease forwards;}
+  .hero-ctas{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:riseIn .9s .8s ease forwards;}
+  @keyframes riseIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-static {
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+
+.hero-hover {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.hud-frame:hover .hero-static {
+  opacity: 0;
+}
+
+.hud-frame:hover .hero-hover {
+  opacity: 1;
+}
+
+
+  .btn{position:relative;padding:14px 28px;border-radius:8px;font-family:var(--font-mono);font-size:13px;letter-spacing:.05em;
+    display:inline-flex;align-items:center;gap:10px;transition:transform .3s ease;overflow:hidden;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:linear-gradient(90deg,var(--purple),var(--blue));color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.4), 0 12px 30px -8px rgba(255,255,255,.55);}
+  .btn-ghost{border:1px solid var(--line);color:var(--white);backdrop-filter:blur(6px);}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+
+  .scroll-indicator{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;}
+  .scroll-line{width:1px;height:44px;background:linear-gradient(var(--cyan),transparent);animation:scrollLine 2s ease-in-out infinite;}
+  @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}50.1%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+
+/* HERO BUTTONS */
+
+.hero-ctas {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  opacity: 0;
+  animation: riseIn .9s .8s ease forwards;
+}
+
+.btn-social {
+  border: 1px solid var(--line);
+  color: var(--white);
+  background: rgba(255,255,255,.03);
+  backdrop-filter: blur(6px);
+}
+
+.btn-social:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.resume-btn {
+  margin-left: 6px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-ctas {
+    gap: 10px;
+  }
+
+  .resume-btn {
+    margin-left: 0;
+  }
+}
+
+
+
+
+
+  /* nav */
+  #navbar{position:fixed;top:0;left:0;width:100%;z-index:900;padding:18px 32px;
+    display:flex;align-items:center;justify-content:space-between;transition:background .4s,border-color .4s,padding .4s;
+    border-bottom:1px solid transparent;}
+  #navbar.scrolled{background:rgba(6,8,16,0.65);backdrop-filter:blur(16px);border-color:var(--line);padding:12px 32px;}
+  .logo{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:.02em;}
+  .logo span{color:var(--cyan);}
+  .nav-links{display:flex;gap:34px;}
+  .nav-links a{position:relative;font-size:13px;font-family:var(--font-mono);letter-spacing:.04em;color:var(--muted);padding:4px 0;transition:color .25s;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--white);}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  #hamburger{display:none;flex-direction:column;gap:5px;z-index:901;}
+  #hamburger span{width:24px;height:1.5px;background:var(--white);transition:all .3s;}
+  @media (max-width:1024px){
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:rgba(6,8,16,.97);
+      backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:flex-start;padding:40px;gap:26px;
+      transform:translateX(100%);transition:transform .45s ease;border-left:1px solid var(--line);}
+    .nav-links.open{transform:translateX(0);}
+    #hamburger{display:flex;}
+    #hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    #hamburger.open span:nth-child(2){opacity:0;}
+    #hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  }
+
+  /* generic section frame */
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .section-pad{padding:140px 0;}
+  .section-head{margin-bottom:64px;}
+  .section-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.3em;color:var(--cyan);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .section-tag::before{content:'';width:20px;height:1px;background:var(--cyan);}
+  .section-title{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.01em;}
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* about */
+  #about .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center;}
+  @media (max-width:900px){#about .about-grid{grid-template-columns:1fr;gap:48px;}}
+  .photo-frame{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+    background:linear-gradient(160deg,var(--navy-2),var(--navy));border:1px solid var(--line);}
+  .photo-frame::before{content:'';position:absolute;inset:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px),
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 55%),
+      radial-gradient(circle at 75% 80%, rgba(255,255,255,.25), transparent 50%);
+  }
+  .photo-frame .mono-tag{position:absolute;bottom:16px;left:16px;font-family:var(--font-mono);font-size:11px;color:var(--cyan);
+    background:rgba(0,0,0,.4);padding:6px 10px;border-radius:4px;border:1px solid var(--line);}
+  .about-text { background: var(--glass); border: 1px solid var(--line); border-radius: 14px; padding: 28px 30px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: border-color .35s, transform .35s; } 
+  .about-text:hover { border-color: rgba(255,255,255,.5); transform: translateY(-3px); }
+  .about-text strong{color:var(--white);font-weight:500;}
+  .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 18px; font-size: 1.02rem; }
+  .stats-grid{margin-top:42px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  @media (max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+  .stat{border:1px solid var(--line);border-radius:10px;padding:18px 14px;text-align:left;background:var(--glass);}
+  .stat .num{font-family:var(--font-display);font-size:1.9rem;font-weight:700;
+    background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat .label{margin-top:4px;font-size:11px;color:var(--muted);font-family:var(--font-mono);letter-spacing:.03em;}
+
+/* =========================================================
+   ABOUT IMAGE
+   Large image + soft bottom/side fade
+   No frame • No border • No blur • No scanlines
+   ========================================================= */
+
+.photo-frame {
+  position: relative;
+
+  /* Image size */
+  width: 115%;
+  height: 620px;
+
+  /* Remove frame */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+
+  /* Important: keep fade inside image */
+  overflow: hidden;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.photo-frame img.about-portrait {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  /* Fill the large area */
+  object-fit: cover;
+  object-position: center;
+
+  /* Completely clean image */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  opacity: 1 !important;
+
+  transform: none !important;
+}
+
+/* =========================================================
+   SOFT FADE
+   Bottom + left + right sides only
+   ========================================================= */
+
+.photo-frame::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    /* Bottom fade */
+    linear-gradient(
+      to bottom,
+      transparent 68%,
+      rgba(4, 5, 8, 0.15) 78%,
+      rgba(4, 5, 8, 0.55) 90%,
+      var(--black) 100%
+    ),
+
+    /* Left + right fade */
+    linear-gradient(
+      to right,
+      rgba(4, 5, 8, 0.45) 0%,
+      transparent 12%,
+      transparent 88%,
+      rgba(4, 5, 8, 0.55) 100%
+    );
+}
+
+/* =========================================================
+   REMOVE ALL OLD OVERLAYS
+   ========================================================= */
+
+.photo-frame::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.photo-frame .mono-tag {
+  position: absolute;
+
+  left: 20px;
+  bottom: 20px;
+
+  z-index: 5;
+
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+
+  color: var(--muted);
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .photo-frame {
+    width: 115%;
+    height: 620px;
+
+    /* Move image slightly toward the text */
+    margin-left: -5%;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .photo-frame {
+    width: 100%;
+    height: 560px;
+    margin-left: 0;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .photo-frame {
+    width: 100%;
+    height: 480px;
+    margin-left: 0;
+  }
+
+  .photo-frame .mono-tag {
+    left: 14px;
+    bottom: 14px;
+    font-size: 9px;
+  }
+}
+
+  /* timeline (experience + education) */
+  .timeline{position:relative;padding-left:32px;border-left:1px solid var(--line);}
+  .tl-item{position:relative;padding-bottom:56px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{position:absolute;left:-37px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--black);
+    border:2px solid var(--cyan);box-shadow:0 0 0 4px rgba(255,255,255,.08);}
+  .tl-card{background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:28px 30px;backdrop-filter:blur(10px);
+    transition:border-color .35s, transform .35s;}
+  .tl-card:hover{border-color:rgba(255,255,255,.5);transform:translateY(-3px);}
+  .tl-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+  .tl-role{font-family:var(--font-display);font-weight:600;font-size:1.25rem;}
+  .tl-company{color:var(--cyan);font-size:.95rem;margin-top:2px;}
+  .tl-duration{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap;}
+  /* .tl-desc{color:var(--muted);margin:14px 0;line-height:1.75;font-size:.95rem;} */
+
+  .tl-desc { color: var(--muted); margin: 14px 0; line-height: 1.75; font-size: .95rem; } .work-point { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 18px; } .point-symbol { flex: 0 0 12px; margin-top: 3px; } .work-point span:last-child { flex: 1; }
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .tag{font-family:var(--font-mono);font-size:11px;padding:5px 10px;border-radius:5px;border:1px solid var(--line);color:var(--muted);}
+
+  /* projects */
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+@media (max-width:1000px){
+  .project-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media (max-width:640px){
+  .project-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* PROJECT CARD */
+
+.project-card{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--navy-2);
+
+  transform-style:preserve-3d;
+
+  transition:
+    border-color .4s,
+    box-shadow .4s;
+}
+
+.project-card:hover{
+  border-color:rgba(255,255,255,.55);
+  box-shadow:0 20px 50px -20px rgba(255,255,255,.5);
+}
+
+
+/* PROJECT IMAGE AREA */
+
+.project-media{
+  aspect-ratio:16/10;
+  position:relative;
+  overflow:hidden;
+
+  background:#080808;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+/* ACTUAL PROJECT IMAGE */
+
+.project-media img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  /* SHOW COMPLETE IMAGE */
+  object-fit:contain;
+
+  /* KEEP IMAGE SHARP */
+  image-rendering:auto;
+
+  transition:transform .5s ease;
+}
+
+
+/* IMAGE HOVER */
+
+.project-card:hover .project-media img{
+  transform:scale(1.02);
+}
+
+
+/* SCANLINES */
+
+.project-media .scanlines{
+  position:absolute;
+  inset:0;
+
+  z-index:2;
+
+  pointer-events:none;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,.04) 0 2px,
+      transparent 2px 4px
+    );
+}
+
+
+/* LIGHT OVERLAY */
+
+.project-media::after{
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  z-index:3;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255,255,255,.08),
+      transparent 60%
+    );
+}
+
+
+/* PROJECT BODY */
+
+.project-body{
+  padding:26px 26px 28px;
+}
+
+.project-title{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:1.25rem;
+  margin-bottom:8px;
+}
+
+.project-desc{
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.65;
+  margin-bottom:16px;
+}
+
+
+/* PROJECT LINKS */
+
+.project-links{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.project-links a{
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--cyan);
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.project-links a:hover{
+  color:var(--white);
+}
+
+  /* skills */
+  .skills-cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .skills-cats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .skills-cats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-cat {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color .35s, transform .35s;
+}
+
+.skill-cat:hover {
+  border-color: rgba(255,255,255,.5);
+  transform: translateY(-3px);
+}
+
+.skill-cat h3 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  margin-bottom: 18px;
+  color: var(--white);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.skill-item {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: rgba(255,255,255,.02);
+  line-height: 1.4;
+  transition: color .25s, border-color .25s;
+}
+
+.skill-item:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,.4);
+}
+
+  /* blogs */
+  .blog-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+  .filter-btn{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;padding:9px 16px;border-radius:20px;
+    border:1px solid var(--line);color:var(--muted);transition:.25s;}
+  .filter-btn:hover{color:var(--white);border-color:var(--purple);}
+  .filter-btn.active{background:linear-gradient(90deg,var(--purple),var(--blue));color:#fff;border-color:transparent;}
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  @media (max-width:1000px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.blog-grid{grid-template-columns:1fr;}}
+  .blog-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--navy-2);transition:.35s;}
+  .blog-card.hidden{display:none;}
+  .blog-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.5);}
+  .blog-thumb{aspect-ratio:16/9;background:linear-gradient(140deg,var(--navy),var(--navy-2));position:relative;}
+  .blog-thumb::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.3),transparent 60%);}
+  .blog-cat{position:absolute;top:12px;left:12px;font-family:var(--font-mono);font-size:10px;padding:5px 9px;border-radius:4px;
+    background:rgba(0,0,0,.5);border:1px solid var(--line);color:var(--cyan);}
+  .blog-body{padding:22px;}
+  .blog-meta{display:flex;gap:14px;font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:10px;}
+  .blog-title{font-family:var(--font-display);font-size:1.05rem;font-weight:600;margin-bottom:8px;}
+  .blog-desc{color:var(--muted);font-size:.87rem;line-height:1.6;margin-bottom:14px;}
+  .blog-read{font-family:var(--font-mono);font-size:12px;color:var(--cyan);}
+.blog-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-intro {
+  margin-top: 70px;
+}
+
+.contact-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 16px;
+
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  color: var(--muted);
+}
+
+.contact-status .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+
+/* EMAIL */
+
+.contact-email-cta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-top: 30px;
+
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.2vw, 76px);
+  font-weight: 500;
+  line-height: 1.05;
+
+  letter-spacing: -.045em;
+  color: var(--text);
+
+  text-decoration: none;
+
+  transition: opacity .25s ease;
+}
+
+.contact-email-cta span {
+  font-family: var(--font-mono);
+  font-size: .5em;
+  opacity: .8;
+  transform: translateY(-4px);
+}
+
+.contact-email-cta:hover {
+  opacity: .65;
+}
+
+
+/* MAIN GRID */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  gap: 70px;
+
+  margin-top: 55px;
+
+  align-items: stretch;
+}
+
+
+/* LEFT CTA CARD */
+
+.contact-panel {
+  position: relative;
+
+  min-height: 360px;
+
+  border: 1px solid rgba(255,255,255,.14);
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,255,255,.045),
+      transparent 45%
+    ),
+    rgba(255,255,255,.018);
+
+  overflow: hidden;
+}
+
+.contact-panel-inner {
+  min-height: 360px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 50px 40px;
+}
+
+.contact-panel-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 24px;
+
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: .22em;
+  color: var(--text);
+}
+
+.contact-panel-tag span {
+  width: 20px;
+  height: 1px;
+
+  background: currentColor;
+}
+
+.contact-panel h3 {
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 500;
+
+  letter-spacing: -.025em;
+}
+
+.contact-panel p {
+  max-width: 360px;
+
+  margin: 14px 0 30px;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  color: var(--muted);
+}
+
+
+/* BUTTON */
+
+.contact-connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-width: 180px;
+
+  text-decoration: none;
+}
+
+.contact-connect-btn span {
+  font-size: 14px;
+}
+
+
+/* RIGHT SIDE */
+
+.contact-right {
+  position: relative;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+
+/* INFO */
+
+.contact-info {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.info-icon {
+  flex: 0 0 42px;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+
+  font-family: var(--font-mono);
+  font-size: 13px;
+
+  background: rgba(255,255,255,.018);
+}
+
+.info-row .label {
+  margin-bottom: 4px;
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+.info-row .value {
+  font-size: 14px;
+  color: var(--text);
+}
+
+
+/* SOCIALS */
+
+.social-row {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  gap: 10px;
+
+  margin-top: 35px;
+}
+
+.social-chip {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+
+  color: var(--text);
+  text-decoration: none;
+
+  background: rgba(10,10,10,.7);
+
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    transform .25s ease;
+}
+
+.social-chip:hover {
+  border-color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.06);
+  transform: translateY(-3px);
+}
+
+
+/* =========================
+   GLOBE
+========================= */
+
+.globe-deco {
+  position: absolute;
+
+  right: -70px;
+  bottom: -100px;
+
+  width: 360px;
+  height: 360px;
+
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50%;
+
+  opacity: .7;
+
+  pointer-events: none;
+}
+
+.globe-ring {
+  position: absolute;
+
+  inset: 20%;
+
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+}
+
+.globe-ring.r1 {
+  transform: rotate(25deg) scaleX(.45);
+}
+
+.globe-ring.r2 {
+  transform: rotate(-25deg) scaleX(.45);
+}
+
+.globe-ring.r3 {
+  transform: rotate(90deg) scaleX(.45);
+}
+
+
+/* =========================
+   HUD CORNERS
+========================= */
+
+.hud-corner {
+  position: absolute;
+
+  width: 22px;
+  height: 22px;
+
+  z-index: 5;
+}
+
+.hud-corner.tl {
+  top: -1px;
+  left: -1px;
+
+  border-top: 2px solid var(--text);
+  border-left: 2px solid var(--text);
+}
+
+.hud-corner.tr {
+  top: -1px;
+  right: -1px;
+
+  border-top: 2px solid var(--text);
+  border-right: 2px solid var(--text);
+}
+
+.hud-corner.bl {
+  bottom: -1px;
+  left: -1px;
+
+  border-bottom: 2px solid var(--text);
+  border-left: 2px solid var(--text);
+}
+
+.hud-corner.br {
+  right: -1px;
+  bottom: -1px;
+
+  border-right: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+  .contact-intro {
+    margin-top: 45px;
+  }
+
+  .contact-email-cta {
+    font-size: clamp(28px, 8vw, 48px);
+    word-break: break-word;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-panel,
+  .contact-panel-inner {
+    min-height: 320px;
+  }
+
+  .contact-right {
+    min-height: 320px;
+  }
+
+  .globe-deco {
+    width: 300px;
+    height: 300px;
+
+    right: -100px;
+    bottom: -100px;
+  }
+
+}
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:56px 0 30px;position:relative;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:40px;}
+  .footer-links{display:flex;gap:26px;flex-wrap:wrap;}
+  .footer-links a{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+  .footer-links a:hover{color:var(--cyan);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    padding-top:26px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;color:var(--muted);}
+  #to-top{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    transition:.25s;}
+  #to-top:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-4px);}
+
+  .glow-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.25;z-index:0;}
+
+/* =========================================================
+   RESPONSIVE
+   Desktop layout above stays as-is; these rules adapt it
+   for laptops, tablets and phones.
+   ========================================================= */
+
+/* Touch screens (phones, tablets, touch laptops): normal cursor */
+@media (hover:none), (pointer:coarse){
+  body{cursor:auto;}
+  #cursor,#cursor-ring{display:none;}
+}
+
+/* Tap the hero photo on touch screens to swap it (same as hover) */
+@media (hover:none){
+  .hud-frame:hover .hero-static{opacity:1;}
+  .hud-frame:hover .hero-hover{opacity:0;}
+  .hud-frame.swap .hero-static{opacity:0;}
+  .hud-frame.swap .hero-hover{opacity:1;}
+}
+
+/* Hero grows with its content instead of clipping it */
+#hero{height:auto;min-height:100svh;}
+
+/* Small laptops / large tablets */
+@media (max-width:1100px){
+  .nav-links{gap:22px;}
+  .hero-grid{gap:40px;}
+  #about .about-grid{gap:48px;}
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:14px;}
+  .contact-grid{gap:40px;}
+}
+@media (min-width:901px) and (max-width:1100px){
+  .hud-frame{width:260px;}
+  .photo-frame{width:100%;height:auto;aspect-ratio:407/612;margin-left:0;}
+}
+
+/* Tablets and phones: stacked hero */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);}
+  .hero-grid > *{min-width:0;}
+  #hero{padding:96px 0 64px;}
+  .hero-content{text-align:center;}
+  .eyebrow{justify-content:center;}
+  .hero-sub{margin-left:auto;margin-right:auto;}
+  .hero-ctas{justify-content:center;}
+  .hero-photo-wrap{width:min(60vw,260px);}
+  .scroll-indicator{display:none;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* About photo: keep the image's own proportions so nothing is cropped,
+     and fade only the bottom edge (side fades showed as a box) */
+  .photo-frame{width:min(100%,400px);height:auto;aspect-ratio:407/612;margin:0 auto;}
+  .photo-frame::before{background:linear-gradient(to bottom,transparent 72%,var(--black) 100%);}
+}
+
+/* Phones */
+@media (max-width:768px){
+  .wrap,.hero-inner{padding:0 20px;}
+  #navbar,#navbar.scrolled{padding:12px 20px;}
+  .section-pad{padding:88px 0;}
+  .section-head{margin-bottom:40px;}
+
+  .about-text{padding:22px 20px;}
+  .about-text p{font-size:.97rem;line-height:1.75;}
+
+  .timeline{padding-left:24px;}
+  .tl-dot{left:-29px;}
+  .tl-item{padding-bottom:36px;}
+  .tl-card{padding:22px 20px;}
+  .tl-role{font-size:1.1rem;}
+
+  .project-grid,.blog-grid,.skills-cats{gap:20px;}
+  .project-body{padding:20px;}
+  .skill-cat{padding:20px;}
+  .blog-meta{flex-wrap:wrap;}
+
+  .contact-intro{margin-top:32px;}
+  .contact-status{font-size:9px;letter-spacing:.1em;padding:8px 14px;border-radius:16px;line-height:1.5;}
+  .contact-email-cta{font-size:clamp(18px,5.6vw,40px);letter-spacing:-.02em;gap:10px;min-width:0;overflow-wrap:anywhere;}
+  .contact-panel-inner{padding:40px 22px;}
+  .info-row .value{overflow-wrap:anywhere;}
+  .globe-deco{width:240px;height:240px;right:-90px;bottom:-90px;}
+
+  .footer-top{flex-direction:column;}
+  .footer-links{gap:16px 22px;}
+}
+
+/* Small phones */
+@media (max-width:480px){
+  .eyebrow{font-size:10px;letter-spacing:.16em;}
+  .eyebrow::before{display:none;}
+  .hero-role{height:auto;min-height:3.2em;font-size:.95rem;}
+  .hero-sub{font-size:.95rem;}
+  .btn{padding:12px 20px;}
+  .stats-grid{gap:10px;}
+  .stat{padding:14px 12px;}
+  .stat .num{font-size:1.6rem;}
+  .filter-btn{padding:8px 13px;}
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pl-core"></div>
+  <div class="pl-percent" id="pl-percent">0%</div>
+  <div class="pl-text">Initializing Scene</div>
+</div>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<div class="bg-grid"></div>
+<canvas id="hero-canvas"></canvas>
+
+<nav id="navbar">
+  <a href="#hero" class="logo">KARTHIKEYAN<span></span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero" class="nav-link active">Home</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#experience" class="nav-link">Experience</a></li>
+    <li><a href="#education" class="nav-link">Education</a></li>
+    <li><a href="#projects" class="nav-link">Projects</a></li>
+    <li><a href="#skills" class="nav-link">Skills</a></li>
+    <li><a href="#blogs" class="nav-link">Blogs</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section id="hero">
+
+  <div class="hero-vignette"></div>
+
+  <div class="hero-inner">
+
+    <div class="hero-grid">
+
+      <!-- =========================
+           LEFT: HERO CONTENT
+           ========================= -->
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          UNREAL ENGINE GAMEPLAY PROGRAMMER
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I'm <span class="accent">Karthikeyan RV</span>
+        </h1>
+
+        <div class="hero-role">
+          <span id="typed"></span>
+          <span class="cursor-blink"></span>
+        </div>
+
+        <p class="hero-sub">
+          Unreal Engine Gameplay Programmer with 1+ year of experience,
+          6+ major projects, 3 VR applications, and 15+ scalable gameplay
+          systems using UE5, C++, and Blueprint.
+        </p>
+
+        <!-- =========================
+             SOCIAL LINKS + RESUME
+             ========================= -->
+        <div class="hero-ctas">
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/karthikeyan078"
+            class="btn btn-social"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+          >
+            GH
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/karthikeyan078/"
+            class="btn btn-social"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+          >
+            IN
+          </a>
+
+          <!-- Resume -->
+          <a
+            href="https://drive.google.com/file/d/1k8FG23EIvSpQDhHJN2bo1j8NfpeBMjwS/view?usp=drive_link"
+            class="btn btn-primary resume-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Resume"
+          >
+            <span>↓</span>
+            Resume
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           RIGHT: PROFILE IMAGE
+           ========================= -->
+      <div class="hero-photo-wrap">
+
+<div class="hud-frame" id="heroPhoto">
+
+  <img
+    src="Images/Hero/Karthi_Idl.png"
+    alt="Karthi (Karthikeyan R V), game developer – pixel-art portrait"
+    class="hero-portrait hero-static"
+  >
+
+  <img
+    src="Images/Hero/Karthi_Smile1.png"
+    alt=""
+    class="hero-portrait hero-hover"
+  >
+
+  <div class="hud-corner tl"></div>
+  <div class="hud-corner tr"></div>
+  <div class="hud-corner bl"></div>
+  <div class="hud-corner br"></div>
+
+  <div class="hud-tag">
+    <span class="dot"></span>PLAYER.01
+  </div>
+
+  <div class="hud-id">
+    <span>KARTHIKEYAN R V</span>
+    <span>Pinch Me</span>
+  </div>
+
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       SCROLL INDICATOR
+       ========================= -->
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+
+
+  <!-- =========================
+       BACKGROUND GLOW ORBS
+       ========================= -->
+  <div
+    class="glow-orb"
+    style="
+      width: 500px;
+      height: 500px;
+      background: var(--purple);
+      top: -100px;
+      left: -150px;
+    "
+  ></div>
+
+  <div
+    class="glow-orb"
+    style="
+      width: 400px;
+      height: 400px;
+      background: var(--cyan);
+      bottom: -100px;
+      right: -100px;
+    "
+  ></div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">About</div>
+      <h2 class="section-title">Building worlds that respond.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="photo-frame reveal">
+          <img
+            src="Images/Hero/Karthi_Casual.png"
+            alt="Karthi (Karthikeyan R V), Unreal Engine game developer"
+            class="about-portrait"
+          >
+
+      <!-- <div class="mono-tag">// karthikeyan.render()</div> -->
+</div>
+        <div class="about-text reveal">
+          <p>Hello! I'm <strong>Karthikeyan R V</strong> (Karthi), a game developer and <strong>Unreal Engine Gameplay Programmer</strong> with
+            <strong>1+ year of professional experience</strong> developing gameplay systems, VR applications, and
+            real-time interactive experiences using <strong>Unreal Engine 5, C++, and Blueprint Visual Scripting</strong>.
+          </p>
+
+          <p>I've delivered <strong>6+ major projects</strong>, including <strong>3 VR applications</strong>, and
+            developed <strong>15+ scalable gameplay systems</strong> covering gameplay mechanics, AI behavior, UI,
+            VR interaction, character controllers, state machines, and real-time visualization.
+          </p>
+
+          <p>I'm passionate about <strong>game development, VR, visual storytelling, 3D development, and story-driven
+            games</strong>. I enjoy solving complex gameplay challenges and building systems that are responsive,
+            immersive, and production-ready. My goal is to contribute to <strong>AAA-quality games</strong> through
+            robust gameplay systems and engaging player experiences.
+          </p>
+
+          <div class="stats-grid">
+
+
+          <div class="stat"><div class="num" data-count="6">0</div><div class="label">Major Projects</div></div>
+          <div class="stat"><div class="num" data-count="1">0</div><div class="label">Year Experience</div></div>
+          <div class="stat"><div class="num" data-count="15">0</div><div class="label">Gameplay Systems</div></div>
+          <div class="stat"><div class="num" data-count="3">0</div><div class="label">VR Apps Delivered</div></div>
+          <div class="stat"><div class="num" data-count="2">0</div><div class="label">Certifications</div></div>
+        </div>
+        <!-- <div class="tag-row" style="margin-top:28px;">
+          <span class="tag">UNREAL ENGINE GAMEPLAY PROGRAMMER</span><span class="tag">GAME DEVELOPER</span>
+           <span class="tag">Blueprint Architecture</span><span class="tag">AI Systems</span>
+          <span class="tag">VR Development</span><span class="tag">Rapid Prototyping</span> 
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience" class="section-pad">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+
+      <div class="section-tag">Experience</div>
+
+      <h2 class="section-title">Where the systems got built.</h2>
+
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+
+        <div class="tl-dot"></div>
+
+        <div class="tl-card">
+
+          <div class="tl-top">
+
+            <div><div class="tl-role">Junior Design Engineer</div><div class="tl-company">Sona Star Innovation Private Limited</div></div>
+
+            <div class="tl-duration">May 2025 — Present</div>
+
+          </div>
+
+          
+          <div class="tl-desc"> <div class="work-point"> <span class="point-symbol">▸</span> <span>Developed immersive <strong>VR applications and real-time simulations</strong> using Unreal Engine for educational and institutional clients.</span> </div> <div class="work-point"> <span class="point-symbol">▸</span> <span>Built interactive virtual experiences, including <strong>Sona College Campus VR</strong>, <strong>Sona MBA Hostel VR</strong>, and <strong>SVPS School VR</strong>, enabling remote campus exploration and enhancing digital engagement for prospective students, parents, and stakeholders.</span> </div> <div class="work-point"> <span class="point-symbol">▸</span> <span>Created realistic <strong>3D walkthroughs with interactive navigation</strong>, improving the presentation of campus infrastructure and facilities.</span> </div> <div class="work-point"> <span class="point-symbol">▸</span> <span>Collaborated with <strong>cross-functional teams</strong> to deliver optimized, high-quality VR applications that met client requirements and project timelines.</span> </div> </div>
+          <div class="tag-row">
+
+            <span class="tag">Unreal Engine 5</span><span class="tag">Blueprints</span><span class="tag">VR</span>
+
+            <span class="tag">C++</span><span class="tag">Lighting</span><span class="tag">Environment Design</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      
+      <div class="tl-item reveal">
+
+        <div class="tl-dot"></div>
+
+        <div class="tl-card">
+
+          <div class="tl-top">
+
+            <div><div class="tl-role">Game Developer (Freelance)</div><div class="tl-company">Barewall Interactives</div></div>
+
+            <div class="tl-duration">Remote</div>
+
+          </div>
+
+          
+            <div class="tl-desc">
+
+              <div class="work-point">
+                <span class="point-symbol">▸</span>
+                <span>Developed <strong>gameplay systems and user-facing features</strong> that enhanced gameplay quality and overall player experience.</span>
+              </div>
+
+              <div class="work-point">
+                <span class="point-symbol">▸</span>
+                <span>Designed and implemented a complete <strong>in-game UI, 3D main menu, and settings system</strong>, improving usability and navigation.</span>
+              </div>
+
+              <div class="work-point">
+                <span class="point-symbol">▸</span>
+                <span>Built a custom <strong>2.5D camera system</strong> and a robust <strong>save/load mechanism</strong> to support core gameplay and ensure seamless player progression.</span>
+              </div>
+
+              <div class="work-point">
+                <span class="point-symbol">▸</span>
+                <span>Contributed to <strong>gameplay feature development, debugging, and optimization</strong>, delivering polished and maintainable game systems aligned with project goals.</span>
+              </div>
+
+            </div>
+
+
+          <div class="tag-row">
+
+            <span class="tag">Unreal Engine</span><span class="tag">C++</span><span class="tag">Blueprints</span>
+
+            <span class="tag">UMG</span><span class="tag">Gameplay Framework</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+<!-- EDUCATION -->
+
+<section id="education" class="section-pad">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <div class="section-tag">Education</div>
+      <h2 class="section-title">Foundations.</h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- B.E -->
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+
+        <div class="tl-card">
+
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">B.E. Computer Science &amp; Engineering</div>
+              <div class="tl-company">Sona College of Technology</div>
+            </div>
+
+            <div class="tl-duration">2021 — 2025</div>
+          </div>
+
+          <div class="tl-desc">
+            <div class="work-point">
+              <span><strong>CGPA: 7.8</strong></span>
+            </div>
+          </div>
+
+          <!-- <div class="tag-row">
+            <span class="tag">Computer Science</span>
+            <span class="tag">CGPA 7.8</span>
+          </div> -->
+
+        </div>
+      </div>
+
+
+      <!-- HSC -->
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+
+        <div class="tl-card">
+
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Higher Secondary (HSC)</div>
+              <div class="tl-company">
+                SRV Boys Matriculation Higher Secondary School, Salem
+              </div>
+            </div>
+
+            <div class="tl-duration">2020 — 2021</div>
+          </div>
+
+          <div class="tl-desc">
+            <div class="work-point">
+              <span><strong>Score: 89%</strong></span>
+            </div>
+          </div>
+
+          <!-- <div class="tag-row">
+            <span class="tag">HSC</span>
+            <span class="tag">89%</span>
+          </div> -->
+
+        </div>
+      </div>
+
+
+      <!-- SSLC -->
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+
+        <div class="tl-card">
+
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Secondary School Leaving Certificate (SSLC)</div>
+              <div class="tl-company">
+                Holy Cross Matriculation Higher Secondary School, Salem
+              </div>
+            </div>
+
+            <div class="tl-duration">2018 — 2019</div>
+          </div>
+
+          <div class="tl-desc">
+            <div class="work-point">
+              <span><strong>Score: 85%</strong></span>
+            </div>
+          </div>
+
+          <!-- <div class="tag-row">
+            <span class="tag">SSLC</span>
+            <span class="tag">85%</span>
+          </div> -->
+
+        </div>
+      </div>
+
+
+      <!-- CERTIFICATE -->
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+
+        <div class="tl-card">
+
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Foundation Course on Unreal Engine 5.2.1</div>
+              <div class="tl-company">
+                Unreal Authorized Training Center (UATC)
+              </div>
+            </div>
+
+            <div class="tl-duration">Certification</div>
+          </div>
+
+          <div class="tl-desc">
+            <div class="work-point">
+              <span>
+                Foundation certification covering <strong>Unreal Engine 5.2.1</strong>,
+                core editor workflows, Blueprint Visual Scripting, and gameplay development fundamentals.
+              </span>
+            </div>
+          </div>
+
+          <!-- <div class="tag-row">
+            <span class="tag">Unreal Engine 5.2.1</span>
+            <span class="tag">UATC Certification</span>
+            <span class="tag">Blueprints</span>
+          </div> -->
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- PROJECTS --> 
+<section id="projects" class="section-pad"> 
+  <div class="wrap"> 
+    <div class="section-head reveal"> 
+      <div class="section-tag">Projects</div> 
+      <h2 class="section-title">Selected work.</h2> 
+    </div> 
+
+    <div class="project-grid">
+
+      <!-- UNSEEN -->
+      <a class="project-card reveal" href="project.html?project=unseen">
+        <div class="project-media">
+          <img src="Images/General/Unseen.png" alt="UnSeen">
+          <div class="scanlines"></div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-title">UnSeen</div>
+
+          <p class="project-desc">
+            A story-driven third-person stealth game where household objects transform
+            into human form to help a child complete daily tasks without being detected.
+            Features character-state switching, child AI, stealth detection, missions,
+            checkpoints, and a hazard system.
+          </p>
+        </div>
+      </a>
+
+
+      <!-- DISTORIA -->
+      <a class="project-card reveal" href="project.html?project=distoria">
+        <div class="project-media">
+          <img src="Images/General/Distoria_Crop.png" alt="Distoria">
+          <div class="scanlines"></div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-title">Distoria</div>
+
+          <p class="project-desc">
+            A VR exploration and adventure game featuring immersive traversal —
+            climbing, sliding, and shield creation — with physics-driven
+            environmental interaction.
+          </p>
+        </div>
+      </a>
+
+
+      <!-- LITTLE NIGHTMARES -->
+      <a class="project-card reveal" href="project.html?project=little-nightmare-camera">
+        <div class="project-media">
+          <img src="Images/General/LNM.jpg" alt="Little Nightmare Camera System">
+          <div class="scanlines"></div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-title">Little Nightmare Camera System</div>
+
+          <p class="project-desc">
+            A recreation of the dynamic camera system from Little Nightmares, with
+            look-around, hallway, hidden-passage, vent, vertical, and cinematic
+            cameras, all switched via triggers.
+          </p>
+        </div>
+      </a>
+
+
+      <!-- GAUNTLET -->
+      <a class="project-card reveal" href="project.html?project=gauntlet">
+        <div class="project-media">
+          <img src="Images/General/GON.png" alt="Gauntlet of the Knight">
+          <div class="scanlines"></div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-title">Gauntlet of the Knight</div>
+
+          <p class="project-desc">
+            A medieval precision platformer emphasizing skill-based movement, with
+            dynamic obstacles, checkpoints, respawns, and kill zones.
+          </p>
+        </div>
+      </a>
+
+
+      <!-- POUCH OF TIMS -->
+      <a class="project-card reveal" href="project.html?project=pouch-of-tims">
+        <div class="project-media">
+          <img src="Images/General/POT.png" alt="Pouch of Tims">
+          <div class="scanlines"></div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-title">Pouch of Tims</div>
+
+          <p class="project-desc">
+            A 2.5D adventure pouch's adventure game with multiple gameplay systems built to enhance the
+            player experience — a custom 2.5D camera, save system, in-game UI,
+            and a 3D main menu.
+          </p>
+        </div>
+      </a>
+
+
+      <!-- VR SIMULATIONS -->
+      <a class="project-card reveal" href="project.html?project=vr-simulations">
+        <div class="project-media">
+          <img src="Images/General/VR.jpg" alt="VR Simulation Projects">
+          <div class="scanlines"></div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-title">VR Simulation Projects</div>
+
+          <p class="project-desc">
+            A collection of educational VR experiences for institutions — Sona
+            College Campus VR, Sona MBA Hostel VR, and SVPS School VR — with guided
+            walkthroughs, interactive navigation, and real-time rendering optimized
+            for large environments.
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </div> 
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section-pad">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <div class="section-tag">Skills</div>
+      <h2 class="section-title">The toolkit.</h2>
+    </div>
+
+    <div class="skills-cats">
+
+      <!-- Gameplay Programming -->
+      <div class="skill-cat reveal">
+        <h3>Gameplay Programming</h3>
+
+        <div class="skill-list">
+          <span class="skill-item">Gameplay Framework</span>
+           <span class="skill-item">Camera Systems</span>
+          <span class="skill-item">Actor &amp; Component Architecture</span>
+          <!-- <span class="skill-item">Character Controllers</span> -->
+          <span class="skill-item">Game State &amp; Game Mode</span>
+               <span class="skill-item">UI Systems</span>
+          <!-- <span class="skill-item">Interfaces &amp; Delegates</span> -->
+          <span class="skill-item">Event-Driven Gameplay</span>
+          <!-- <span class="skill-item">Collision &amp; Physics</span> -->
+          <span class="skill-item">Interaction Systems</span>
+          <span class="skill-item">Save/Load Systems</span>
+         
+          <span class="skill-item">Enhanced Input</span>
+     
+        </div>
+      </div>
+
+      <!-- AI -->
+      <div class="skill-cat reveal">
+        <h3>AI</h3>
+
+        <div class="skill-list">
+          <span class="skill-item">Behavior Trees</span>
+          <span class="skill-item">Blackboards</span>
+          <span class="skill-item">AI Perception</span>
+          <span class="skill-item">NavMesh</span>
+          <span class="skill-item">AI Controllers</span>
+          <!-- <span class="skill-item">State Machines</span> -->
+          <!-- <span class="skill-item">NPC Behavior</span> -->
+        </div>
+      </div>
+
+      <!-- VR -->
+      <div class="skill-cat reveal">
+        <h3>VR</h3>
+
+        <div class="skill-list">
+          <span class="skill-item">VR Interaction Systems</span>
+          <span class="skill-item">VR Locomotion</span>
+          <span class="skill-item">VR UI / Interaction</span>
+          <span class="skill-item">Motion Controllers</span>
+          <span class="skill-item">Meta Quest</span>
+          <!-- <span class="skill-item">OpenXR</span>
+          <span class="skill-item">VR Optimization</span> -->
+        </div>
+      </div>
+
+      <!-- Unreal Engine -->
+      <div class="skill-cat reveal">
+        <h3>Unreal Engine</h3>
+
+        <div class="skill-list">
+          <span class="skill-item">Unreal Engine 5</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-item">Blueprint Visual Scripting</span>
+          <span class="skill-item">UMG</span>
+          <span class="skill-item">Animation Blueprints</span>
+          <span class="skill-item">Niagara</span>
+          <span class="skill-item">Materials</span>
+          <span class="skill-item">Lighting</span>
+          <span class="skill-item">Level Design</span>
+          <span class="skill-item">World Building</span>
+        </div>
+      </div>
+
+      <!-- Programming Concepts -->
+      <div class="skill-cat reveal">
+        <h3>Programming Concepts</h3>
+
+        <div class="skill-list">
+          <span class="skill-item">Object-Oriented Programming</span>
+          <span class="skill-item">Data Structures &amp; Algorithms</span>
+          <!-- <span class="skill-item">Design Patterns</span> -->
+          <span class="skill-item">Debugging</span>
+          <!-- <span class="skill-item">Performance Optimization</span>
+          <span class="skill-item">Memory Management</span> -->
+        </div>
+      </div>
+
+      <!-- Tools & Workflow -->
+      <div class="skill-cat reveal">
+        <h3>Tools &amp; Workflow</h3>
+
+        <div class="skill-list">
+          <!-- <span class="skill-item">Git</span> -->
+          <span class="skill-item">GitHub</span>
+          <span class="skill-item">Perforce</span>
+          <span class="skill-item">Diversion</span>
+          <span class="skill-item">Visual Studio</span>
+          <!-- <span class="skill-item">JetBrains Rider</span> -->
+          <!-- <span class="skill-item">Unreal Editor</span> -->
+          <span class="skill-item">Blender</span>
+          <span class="skill-item">3D Modeling</span>
+          <!-- <span class="skill-item">Profiling &amp; Optimization</span> -->
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- BLOGS -->
+<section id="blogs" class="section-pad">
+
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <div class="section-tag">Blogs</div>
+      <h2 class="section-title">Notes from the editor.</h2>
+    </div>
+
+
+    <!-- BLOG FILTERS -->
+    <div class="blog-filters reveal">
+
+      <button
+        class="filter-btn active"
+        data-filter="all"
+      >
+        All
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="gamedev"
+      >
+        Game Dev
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="unreal"
+      >
+        Unreal Engine
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="programming"
+      >
+        Programming
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="ai"
+      >
+        AI
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="xr"
+      >
+        VR
+      </button>
+
+    </div>
+
+
+    <!-- BLOG GRID -->
+    <div
+      class="blog-grid"
+      id="blogGrid"
+    >
+
+
+      <!-- =====================================================
+           BLOG 01
+      ====================================================== -->
+
+      <a
+  href="blog.html?post=unreal-journey"
+  class="blog-card reveal"
+  data-cat="unreal"
+>
+
+  <div class="blog-thumb">
+
+    <img src="Images/Blogs/Gp.png" alt="My journey into Unreal Engine development" loading="lazy">
+
+    <span class="blog-cat">
+      Unreal Engine
+    </span>
+
+  </div>
+
+  <div class="blog-body">
+
+    <div class="blog-meta">
+      <span></span>
+    </div>
+
+    <div class="blog-title">
+      My Journey into Unreal Engine Development
+    </div>
+
+    <p class="blog-desc">
+      How I got started with Unreal Engine and what
+      I'd tell someone picking it up today.
+    </p>
+
+    <span class="blog-read">
+      Read Article →
+    </span>
+
+  </div>
+
+</a>
+
+
+
+      <!-- =====================================================
+           BLOG 02
+      ====================================================== -->
+
+      <a
+        href="blog.html?post=gameplay-systems"
+        class="blog-card reveal"
+        data-cat="gamedev"
+      >
+
+        <div class="blog-thumb">
+          <img src="Images/Blogs/GPS.png" alt="Building gameplay systems in Unreal Engine" loading="lazy">
+
+          <span class="blog-cat">
+            Game Dev
+          </span>
+
+        </div>
+
+
+        <div class="blog-body">
+
+          <div class="blog-meta">
+            <!-- <span>Coming soon</span> -->
+          </div>
+
+          <div class="blog-title">
+            Building Gameplay Systems in Unreal Engine
+          </div>
+
+          <p class="blog-desc">
+            Breaking down how I structure save systems,
+            missions, and checkpoints so they scale.
+          </p>
+
+          <span class="blog-read">
+            Read Article →
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- =====================================================
+           BLOG 03
+      ====================================================== -->
+
+      <a
+        href="blog.html?post=blueprint-vs-cpp"
+        class="blog-card reveal"
+        data-cat="programming"
+      >
+
+        <div class="blog-thumb">
+        <img src="Images/Blogs/BP_VS_C.png" alt="Unreal Engine Blueprint vs C++" loading="lazy">
+          <span class="blog-cat">
+            Programming
+          </span>
+
+        </div>
+
+
+        <div class="blog-body">
+
+          <div class="blog-meta">
+            <!-- <span>Coming soon</span> -->
+          </div>
+
+          <div class="blog-title">
+            Blueprint vs C++
+          </div>
+
+          <p class="blog-desc">
+            A practical framework for deciding what belongs
+            in Blueprints versus native code.
+          </p>
+
+          <span class="blog-read">
+            Read Article →
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- =====================================================
+           BLOG 04
+      ====================================================== -->
+
+      <a
+        href="blog.html?post=ai-systems"
+        class="blog-card reveal"
+        data-cat="ai"
+      >
+
+        <div class="blog-thumb">
+        <img src="Images/Blogs/CSW.png" alt="Creating better AI in Unreal Engine – coming soon" loading="lazy">
+          <span class="blog-cat">
+            AI
+          </span>
+
+        </div>
+
+
+        <div class="blog-body">
+
+          <div class="blog-meta">
+            <span>Coming soon</span>
+          </div>
+
+          <div class="blog-title">
+            Creating Better AI in Unreal Engine
+          </div>
+
+          <p class="blog-desc">
+            Notes on behavior trees, perception, and making
+            enemies feel fair to play against.
+          </p>
+
+          <span class="blog-read">
+            Read Article →
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- =====================================================
+           BLOG 05
+      ====================================================== -->
+
+      <a
+        href="blog.html?post=unreal-optimization"
+        class="blog-card reveal"
+        data-cat="unreal"
+      >
+
+        <div class="blog-thumb">
+            <img src="Images/Blogs/CSW.png" alt="Optimizing Unreal Engine games – coming soon" loading="lazy">
+          <span class="blog-cat">
+            Unreal Engine
+          </span>
+
+        </div>
+
+
+        <div class="blog-body">
+
+          <div class="blog-meta">
+            <span>Coming soon</span>
+          </div>
+
+          <div class="blog-title">
+            Optimizing Unreal Engine Games
+          </div>
+
+          <p class="blog-desc">
+            Profiling and performance lessons from shipping
+            VR builds on real hardware.
+          </p>
+
+          <span class="blog-read">
+            Read Article →
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- =====================================================
+           BLOG 06
+      ====================================================== -->
+
+      <a
+        href="blog.html?post=vr-development"
+        class="blog-card reveal"
+        data-cat="xr"
+      >
+
+        <div class="blog-thumb">
+            <img src="Images/Blogs/VR.png" alt="Building VR experiences in Unreal Engine" loading="lazy">
+          <span class="blog-cat">
+            VR
+          </span>
+
+        </div>
+
+
+        <div class="blog-body">
+
+          <div class="blog-meta">
+            <!-- <span>Coming soon</span> -->
+          </div>
+
+          <div class="blog-title">
+            Building VR Experiences
+          </div>
+
+          <p class="blog-desc">
+            What changes when you design for VR —
+            locomotion, interaction, and comfort.
+          </p>
+
+          <span class="blog-read">
+            Read Article →
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- =====================================================
+           BLOG 07
+      ====================================================== -->
+
+      <a
+        href="blog.html?post=learning-game-development"
+        class="blog-card reveal"
+        data-cat="gamedev"
+      >
+
+        <div class="blog-thumb">
+<img src="Images/Blogs/GDev.png" alt="My learning journey in game development" loading="lazy">
+          <span class="blog-cat">
+            Game Dev
+          </span>
+
+        </div>
+
+
+        <div class="blog-body">
+
+          <div class="blog-meta">
+            <!-- <span>Coming soon</span> -->
+          </div>
+
+          <div class="blog-title">
+            My Learning Journey in Game Development
+          </div>
+
+          <p class="blog-desc">
+            Reflections on the projects, mistakes, and
+            mentors that shaped how I build games.
+          </p>
+
+          <span class="blog-read">
+            Read Article →
+          </span>
+
+        </div>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-pad contact-section">
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Let's build something.</h2>
+    </div>
+
+    <!-- Availability + Email -->
+    <div class="contact-intro reveal">
+      <div class="contact-status">
+        <span class="dot"></span>
+        AVAILABLE FOR FULL-TIME · FREELANCE · REMOTE
+      </div>
+
+      <a
+        class="contact-email-cta"
+        href="mailto:karthikeyan010304@gmail.com"
+      >
+        karthikeyan010304@gmail.com
+        <span>↗</span>
+      </a>
+    </div>
+
+    <!-- Main Contact Area -->
+    <div class="contact-grid">
+
+      <!-- CTA CARD -->
+      <div class="contact-panel reveal">
+
+        <div class="hud-corner tl"></div>
+        <div class="hud-corner tr"></div>
+        <div class="hud-corner bl"></div>
+        <div class="hud-corner br"></div>
+
+        <div class="contact-panel-inner">
+
+          <div class="contact-panel-tag">
+            <span></span>
+            GET IN TOUCH
+          </div>
+
+          <h3>Have a project in mind?</h3>
+
+          <p>
+            Let's talk about your next idea, project, or opportunity.
+          </p>
+
+          <a
+            class="btn btn-primary contact-connect-btn"
+            href="https://cal.com/karthi-keyan-rdxqia/secret"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Let's Connect
+            <span>↗</span>
+          </a>
+
+        </div>
+      </div>
+
+
+      <!-- CONTACT INFO -->
+      <div class="contact-right reveal">
+
+        <div class="contact-info">
+
+          <div class="info-row">
+            <div class="info-icon">@</div>
+
+            <div>
+              <div class="label">Email</div>
+              <div class="value">
+                karthikeyan010304@gmail.com
+              </div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">#</div>
+
+            <div>
+              <div class="label">Phone</div>
+              <div class="value">
+                9751990206
+              </div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">◎</div>
+
+            <div>
+              <div class="label">Location</div>
+              <div class="value">
+                Bangalore, India
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- SOCIALS -->
+        <div class="social-row">
+
+          <a
+            class="social-chip"
+            href="https://github.com/karthikeyan078"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+          >
+            GH
+          </a>
+
+          <a
+            class="social-chip"
+            href="https://www.linkedin.com/in/karthikeyan078/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+          >
+            IN
+          </a>
+
+          <a
+            class="social-chip"
+            href="https://drive.google.com/file/d/1k8FG23EIvSpQDhHJN2bo1j8NfpeBMjwS/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Resume"
+          >
+            R
+          </a>
+
+          <!-- <a class="social-chip" href="#" title="YouTube">
+            YT
+          </a>
+
+          <a class="social-chip" href="#" title="X / Twitter">
+            X
+          </a> -->
+
+        </div>
+
+
+        <!-- DECORATIVE GLOBE -->
+        <div class="globe-deco">
+
+          <div class="globe-ring r1"></div>
+          <div class="globe-ring r2"></div>
+          <div class="globe-ring r3"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#hero" class="logo">KARTHIKEYAN<span></span></a>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:10px;max-width:280px;">
+          Unreal Engine Game Developer crafting gameplay systems, VR applications, and immersive experiences.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
+        <a href="#skills">Skills</a><a href="#blogs">Blogs</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Karthi (Karthikeyan R V), Game Developer. All rights reserved.</span>
+      <button id="to-top">↑</button>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ---------- Preloader ---------- */
+const preloader = document.getElementById('preloader');
+const plPercent = document.getElementById('pl-percent');
+let pct = 0;
+const plInterval = setInterval(()=>{
+  pct += Math.random()*18;
+  if(pct>=100){pct=100; clearInterval(plInterval);
+    setTimeout(()=>preloader.classList.add('hide'), 350);
+  }
+  plPercent.textContent = Math.floor(pct)+'%';
+}, 180);
+
+/* ---------- Custom cursor ---------- */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0, rx=0, ry=0;
+window.addEventListener('mousemove', e=>{
+  mx=e.clientX; my=e.clientY;
+  cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+});
+(function animRing(){
+  rx += (mx-rx)*0.15; ry += (my-ry)*0.15;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a, button, .project-card, input, textarea').forEach(el=>{
+  el.addEventListener('mouseenter', ()=>{ ring.style.width='54px'; ring.style.height='54px'; ring.style.opacity='.5'; cursor.style.background='var(--purple)'; });
+  el.addEventListener('mouseleave', ()=>{ ring.style.width='34px'; ring.style.height='34px'; ring.style.opacity='1'; cursor.style.background='var(--cyan)'; });
+});
+
+/* ---------- Scroll progress + navbar state ---------- */
+const navbar = document.getElementById('navbar');
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  progressBar.style.width = scrolled+'%';
+  navbar.classList.toggle('scrolled', window.scrollY>40);
+});
+
+/* ---------- Mobile menu ---------- */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', ()=>{
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click', ()=>{
+  hamburger.classList.remove('open'); navLinks.classList.remove('open');
+}));
+
+/* ---------- Active section indicator ---------- */
+const sections = document.querySelectorAll('section[id]');
+const navA = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  sections.forEach(sec=>{
+    const top = sec.offsetTop - 120;
+    if(window.scrollY >= top) current = sec.id;
+  });
+  navA.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+  });
+});
+
+/* ---------- Typing animation ---------- */
+const roles = [ "Game Developer","Unreal Engine Gameplay Programmer","VR Developer","Blueprint & C++ Developer"];
+const typedEl = document.getElementById('typed');
+let ri=0, ci=0, deleting=false;
+function typeLoop(){
+  const word = roles[ri];
+  if(!deleting){
+    typedEl.textContent = word.slice(0, ++ci);
+    if(ci===word.length){ deleting=true; setTimeout(typeLoop, 1400); return; }
+  } else {
+    typedEl.textContent = word.slice(0, --ci);
+    if(ci===0){ deleting=false; ri=(ri+1)%roles.length; }
+  }
+  setTimeout(typeLoop, deleting?40:75);
+}
+typeLoop();
+
+/* ---------- Scroll reveal ---------- */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+/* ---------- Stat counters ---------- */
+const counters = document.querySelectorAll('.stat .num');
+const cio = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      let cur = 0;
+      const step = Math.max(1, Math.floor(target/40));
+      const t = setInterval(()=>{
+        cur += step;
+        if(cur>=target){cur=target; clearInterval(t);}
+        el.textContent = cur;
+      }, 30);
+      cio.unobserve(el);
+    }
+  });
+}, {threshold:0.4});
+counters.forEach(c=>cio.observe(c));
+
+/* ---------- Skill bars ---------- */
+const bars = document.querySelectorAll('.bar-fill');
+const bio = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.width = entry.target.dataset.w+'%';
+      bio.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.3});
+bars.forEach(b=>bio.observe(b));
+
+/* ---------- Blog filters ---------- */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.blog-card').forEach(card=>{
+      card.classList.toggle('hidden', f!=='all' && card.dataset.cat!==f);
+    });
+  });
+});
+
+/* ---------- Project tilt ---------- */
+document.querySelectorAll('.project-card').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - 0.5;
+    const y = (e.clientY - r.top)/r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', ()=>{ card.style.transform = 'perspective(800px) rotateY(0) rotateX(0)'; });
+});
+
+/* ---------- Hero photo tap (touch screens have no hover) ---------- */
+document.getElementById('heroPhoto').addEventListener('click', e=>{
+  e.currentTarget.classList.toggle('swap');
+});
+
+/* ---------- Back to top ---------- */
+document.getElementById('to-top').addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+
+// //* ============================================================
+//    THREE.JS — PARTICLE ORB
+//    ------------------------------------------------------------
+//    • Fully procedural, no external model
+//    • A glowing core of particles + a sparse low-poly shell
+//      of connecting lines + a soft drifting outer halo
+//    • Self-rotating, gently pulsing
+//    • Mouse parallax + scroll-controlled travel path
+//    • Fading particle flight-trail behind it
+//    ============================================================ */
+
+(function () {
+
+    const canvas = document.getElementById("hero-canvas");
+
+    if (!canvas || typeof THREE === "undefined") return;
+
+
+    /* =========================================================
+       RENDERER
+       ========================================================= */
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: true
+    });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+    /* =========================================================
+       SCENE
+       ========================================================= */
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+        50,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+    );
+
+    camera.position.set(0, 0, 7);
+
+
+    /* =========================================================
+       MAIN ORB GROUP
+       ========================================================= */
+
+    const orb = new THREE.Group();
+    scene.add(orb);
+
+
+    /* =========================================================
+       MATERIALS
+       ========================================================= */
+
+    const wireMaterial = new THREE.LineBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.22,
+        depthWrite: false
+    });
+
+    const coreMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.026,
+        transparent: true,
+        opacity: 0.85,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true
+    });
+
+    const glowMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.07,
+        transparent: true,
+        opacity: 0.35,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true
+    });
+
+    const haloMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.014,
+        transparent: true,
+        opacity: 0.28,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true
+    });
+
+
+    /* =========================================================
+       HELPERS
+       ========================================================= */
+
+    function random(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    /* Even distribution of N points on a sphere surface. */
+    function fibonacciSphere(count, radius) {
+        const pts = [];
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+
+        for (let i = 0; i < count; i++) {
+            const y = 1 - (i / (count - 1)) * 2;
+            const r = Math.sqrt(1 - y * y);
+            const theta = goldenAngle * i;
+
+            const x = Math.cos(theta) * r;
+            const z = Math.sin(theta) * r;
+
+            pts.push({ x: x * radius, y: y * radius, z: z * radius });
+        }
+        return pts;
+    }
+
+    function toFlat(pts) {
+        const flat = [];
+        pts.forEach(p => flat.push(p.x, p.y, p.z));
+        return flat;
+    }
+
+    function pointsMesh(flatPoints, material) {
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.Float32BufferAttribute(flatPoints, 3));
+        return new THREE.Points(geometry, material);
+    }
+
+
+    /* =========================================================
+       CORE — dense glowing particle sphere
+       ========================================================= */
+
+    const CORE_COUNT = 420;
+    const corePts = fibonacciSphere(CORE_COUNT, 1.15);
+
+    /* light jitter so it doesn't look perfectly mechanical */
+    corePts.forEach(p => {
+        p.x += random(-0.05, 0.05);
+        p.y += random(-0.05, 0.05);
+        p.z += random(-0.05, 0.05);
+    });
+
+    orb.add(pointsMesh(toFlat(corePts), coreMaterial));
+
+    /* a smaller inner cluster for a brighter hot center */
+    const innerPts = [];
+    for (let i = 0; i < 90; i++) {
+        const r = Math.pow(Math.random(), 0.5) * 0.55;
+        const u = random(0, Math.PI * 2);
+        const v = random(0, Math.PI);
+        innerPts.push({
+            x: Math.cos(u) * Math.sin(v) * r,
+            y: Math.cos(v) * r,
+            z: Math.sin(u) * Math.sin(v) * r
+        });
+    }
+    orb.add(pointsMesh(toFlat(innerPts), glowMaterial));
+
+
+    /* =========================================================
+       SHELL WIREFRAME — sparse geodesic-style connections
+       ---------------------------------------------------------
+       Only a subset of the core points get connected, keeping
+       the low-poly, airy look rather than a solid mesh.
+       ========================================================= */
+
+    const shellSubset = corePts.filter((_, i) => i % 3 === 0);
+    const lineVerts = [];
+
+    function dist(a, b) {
+        const dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z;
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    }
+
+    for (let i = 0; i < shellSubset.length; i++) {
+        const p = shellSubset[i];
+        const neighbors = [];
+
+        for (let j = 0; j < shellSubset.length; j++) {
+            if (i === j) continue;
+            const d = dist(p, shellSubset[j]);
+            if (d < 0.45) neighbors.push({ index: j, distance: d });
+        }
+
+        neighbors.sort((a, b) => a.distance - b.distance);
+        const connections = Math.min(neighbors.length, 2);
+
+        for (let n = 0; n < connections; n++) {
+            const idx = neighbors[n].index;
+            if (idx <= i) continue;
+            const t = shellSubset[idx];
+            lineVerts.push(p.x, p.y, p.z, t.x, t.y, t.z);
+        }
+    }
+
+    const shellGeometry = new THREE.BufferGeometry();
+    shellGeometry.setAttribute("position", new THREE.Float32BufferAttribute(lineVerts, 3));
+    orb.add(new THREE.LineSegments(shellGeometry, wireMaterial));
+
+
+    /* =========================================================
+       OUTER HALO — loose drifting particles around the orb
+       ========================================================= */
+
+    const haloPts = [];
+    const HALO_COUNT = 260;
+
+    for (let i = 0; i < HALO_COUNT; i++) {
+        const r = 1.5 + Math.pow(Math.random(), 2) * 1.1;
+        const u = random(0, Math.PI * 2);
+        const v = random(0, Math.PI);
+
+        haloPts.push(
+            Math.cos(u) * Math.sin(v) * r,
+            Math.cos(v) * r,
+            Math.sin(u) * Math.sin(v) * r
+        );
+    }
+
+    const halo = pointsMesh(haloPts, haloMaterial);
+    orb.add(halo);
+
+
+    /* =========================================================
+       AMBIENT BACKGROUND DUST
+       ========================================================= */
+
+    const dustPositions = [];
+    const DUST_COUNT = 500;
+
+    for (let i = 0; i < DUST_COUNT; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const radius = Math.pow(Math.random(), 1.8) * 2.6;
+
+        dustPositions.push(
+            Math.cos(angle) * radius * 1.4,
+            Math.sin(angle) * radius * 0.75,
+            random(-1.2, 1.2)
+        );
+    }
+
+    const dustGeometry = new THREE.BufferGeometry();
+    dustGeometry.setAttribute("position", new THREE.Float32BufferAttribute(dustPositions, 3));
+
+    const dustMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.012,
+        transparent: true,
+        opacity: 0.16,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true
+    });
+
+    const dust = new THREE.Points(dustGeometry, dustMaterial);
+    scene.add(dust);
+
+
+    /* =========================================================
+       FLIGHT TRAIL
+       ========================================================= */
+
+    const TRAIL_LENGTH = 22;
+    const trailHistory = [];
+
+    for (let i = 0; i < TRAIL_LENGTH; i++) {
+        trailHistory.push(new THREE.Vector3(0, 0, 0));
+    }
+
+    const trailPositions = new Float32Array(TRAIL_LENGTH * 3);
+    const trailColors = new Float32Array(TRAIL_LENGTH * 3);
+
+    for (let i = 0; i < TRAIL_LENGTH; i++) {
+        const fade = i / (TRAIL_LENGTH - 1);
+        trailColors[i * 3] = fade;
+        trailColors[i * 3 + 1] = fade;
+        trailColors[i * 3 + 2] = fade;
+    }
+
+    const trailGeometry = new THREE.BufferGeometry();
+    trailGeometry.setAttribute("position", new THREE.BufferAttribute(trailPositions, 3));
+    trailGeometry.setAttribute("color", new THREE.BufferAttribute(trailColors, 3));
+
+    const trailMaterial = new THREE.LineBasicMaterial({
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.45,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+    });
+
+    const trail = new THREE.Line(trailGeometry, trailMaterial);
+    scene.add(trail);
+
+
+    /* =========================================================
+       MOUSE
+       ========================================================= */
+
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    window.addEventListener("mousemove", function (event) {
+        targetMouseX = event.clientX / window.innerWidth - 0.5;
+        targetMouseY = event.clientY / window.innerHeight - 0.5;
+    });
+
+
+    /* =========================================================
+       SCROLL POSITION
+       ========================================================= */
+
+    function getScrollFraction() {
+        const el = document.documentElement;
+        const maxScroll = el.scrollHeight - el.clientHeight;
+        if (maxScroll <= 0) return 0;
+        return THREE.MathUtils.clamp(el.scrollTop / maxScroll, 0, 1);
+    }
+
+
+    /* =========================================================
+       ANIMATION
+       ========================================================= */
+
+    const clock = new THREE.Clock();
+
+    let currentX = 0;
+    let currentY = 0;
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const time = clock.getElapsedTime();
+        const scroll = getScrollFraction();
+
+        /* ---------- smooth mouse ---------- */
+        mouseX += (targetMouseX - mouseX) * 0.045;
+        mouseY += (targetMouseY - mouseY) * 0.045;
+
+        /* ---------- travel path ---------- */
+        const pathX = Math.sin(scroll * Math.PI * 2.7) * 2.4;
+        const pathY = 1.2 - scroll * 2.8;
+
+        currentX += (pathX - currentX) * 0.045;
+        currentY += (pathY - currentY) * 0.045;
+
+        const newX = currentX + mouseX * 0.45;
+        const newY = currentY - mouseY * 0.30;
+        const newZ = Math.sin(scroll * Math.PI * 2) * 0.35;
+
+        orb.position.set(newX, newY, newZ);
+
+        /* ---------- gentle self-rotation ---------- */
+        orb.rotation.y = time * 0.22 + mouseX * 0.4;
+        orb.rotation.x = Math.sin(time * 0.35) * 0.18 + mouseY * 0.25;
+        orb.rotation.z = Math.sin(time * 0.18) * 0.06;
+
+        /* ---------- breathing pulse ---------- */
+        const breathe = 1 + Math.sin(time * 1.1) * 0.05;
+        orb.scale.set(breathe, breathe, breathe);
+
+        /* ---------- halo slow counter-drift ---------- */
+        halo.rotation.y = -time * 0.08;
+        halo.rotation.x = Math.sin(time * 0.05) * 0.1;
+
+        /* ---------- background dust drift ---------- */
+        dust.rotation.y = time * 0.018;
+        dust.rotation.x = Math.sin(time * 0.07) * 0.035;
+
+        /* ---------- flight trail ---------- */
+        for (let i = TRAIL_LENGTH - 1; i > 0; i--) {
+            trailHistory[i].copy(trailHistory[i - 1]);
+        }
+        trailHistory[0].set(newX, newY, newZ);
+
+        for (let i = 0; i < TRAIL_LENGTH; i++) {
+            const p = trailHistory[i];
+            trailPositions[i * 3] = p.x;
+            trailPositions[i * 3 + 1] = p.y;
+            trailPositions[i * 3 + 2] = p.z;
+        }
+        trailGeometry.attributes.position.needsUpdate = true;
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+
+    /* =========================================================
+       RESIZE
+       ========================================================= */
+
+    window.addEventListener("resize", function () {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+
+})();
+</script>
+</script>
+</body>
+</html>

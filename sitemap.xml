@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  List of pages for Google. Submit this file in Google Search Console.
+  When you move to your own domain, replace every
+  https://karthikeyan078.github.io/DevPortfolio/ with https://yourdomain.com/
+  (Add the "Coming soon" posts here once they have real content.)
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/</loc><lastmod>2026-10-15</lastmod><priority>1.0</priority></url>
+
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/project.html?project=unseen</loc><lastmod>2026-10-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/project.html?project=distoria</loc><lastmod>2026-10-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/project.html?project=little-nightmare-camera</loc><lastmod>2026-10-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/project.html?project=gauntlet</loc><lastmod>2026-10-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/project.html?project=pouch-of-tims</loc><lastmod>2026-10-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/project.html?project=vr-simulations</loc><lastmod>2026-10-15</lastmod><priority>0.8</priority></url>
+
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/blog.html</loc><lastmod>2026-10-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/blog.html?post=unreal-journey</loc><lastmod>2026-10-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/blog.html?post=gameplay-systems</loc><lastmod>2026-10-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/blog.html?post=blueprint-vs-cpp</loc><lastmod>2026-10-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/blog.html?post=vr-development</loc><lastmod>2026-10-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://karthikeyan078.github.io/DevPortfolio/blog.html?post=learning-game-development</loc><lastmod>2026-10-15</lastmod><priority>0.6</priority></url>
+
+</urlset>

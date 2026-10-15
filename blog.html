@@ -1,0 +1,4997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Game Development Blog | Karthi (Karthikeyan R V) – Unreal Engine</title>
+
+  <meta
+    name="description"
+    id="metaDescription"
+    content="Game development blog by Karthi (Karthikeyan R V): Unreal Engine gameplay systems, Blueprint vs C++, VR development and lessons from building games."
+  >
+
+  <meta name="author" content="Karthikeyan R V (Karthi)">
+
+  <link
+    rel="canonical"
+    id="canonicalLink"
+    href="https://karthikeyan078.github.io/DevPortfolio/blog.html"
+  >
+
+
+  <!-- =========================================================
+       FAVICON + LINK PREVIEWS
+  ========================================================== -->
+
+  <link rel="icon" href="Images/Hero/Favicon/Karthi%20favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/Hero/Favicon/Karthi%20favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/Hero/Favicon/Karthi%20favicon-16x16.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Karthi – Game Developer">
+  <meta property="og:title" content="Game Development Blog | Karthi (Karthikeyan R V)">
+  <meta property="og:description" content="Notes on Unreal Engine, gameplay programming and VR development by Karthi.">
+  <meta property="og:image" content="https://karthikeyan078.github.io/DevPortfolio/Images/Blogs/GDev.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <!-- =========================================================
+       FONTS
+  ========================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================================================
+       CSS
+  ========================================================== -->
+
+  <style>
+
+    /* =========================================================
+       VARIABLES
+    ========================================================== */
+
+    :root {
+
+      --bg: #050505;
+
+      --bg-soft: #0b0b0b;
+
+      --card: #151515;
+
+      --card-hover: #191919;
+
+      --border: rgba(255,255,255,.13);
+
+      --border-hover: rgba(255,255,255,.28);
+
+      --white: #f3f3f3;
+
+      --text: #d8d8d8;
+
+      --muted: #777;
+
+      --muted-light: #999;
+
+      --grid: rgba(255,255,255,.035);
+
+      --font-main: "Inter", sans-serif;
+
+      --font-mono: "JetBrains Mono", monospace;
+
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================== */
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+    }
+
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      background-color: var(--bg);
+
+      color: var(--white);
+
+      font-family: var(--font-main);
+
+      overflow-x: hidden;
+
+    }
+
+
+    a {
+
+      color: inherit;
+
+      text-decoration: none;
+
+    }
+
+
+    button {
+
+      font-family: inherit;
+
+    }
+
+
+    /* =========================================================
+       GRID BACKGROUND
+       Matches your screenshot.
+    ========================================================== */
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -2;
+
+      pointer-events: none;
+
+      background-image:
+
+        linear-gradient(
+          to right,
+          var(--grid) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          to bottom,
+          var(--grid) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        52px 52px;
+
+    }
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================== */
+
+    .navbar {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      right: 0;
+
+      z-index: 1000;
+
+      height: 49px;
+
+      display: flex;
+
+      align-items: center;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.10);
+
+      background:
+        rgba(5,5,5,.88);
+
+      backdrop-filter:
+        blur(14px);
+
+    }
+
+
+    .nav-inner {
+
+      width:
+        min(
+          100% - 60px,
+          1720px
+        );
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+    }
+
+
+    .logo {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      letter-spacing: -.02em;
+
+    }
+
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 32px;
+
+    }
+
+
+    .nav-links a {
+
+      position: relative;
+
+      color: #777;
+
+      font-family: var(--font-mono);
+
+      font-size: 12px;
+
+      transition:
+        color .25s ease;
+
+    }
+
+
+    .nav-links a:hover {
+
+      color: var(--white);
+
+    }
+
+
+    .nav-links a.active {
+
+      color: var(--white);
+
+    }
+
+
+    .nav-links a.active::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: -10px;
+
+      height: 1px;
+
+      background: var(--white);
+
+    }
+
+
+    /* =========================================================
+       PAGE
+    ========================================================== */
+
+    .page {
+
+      width:
+        min(
+          1100px,
+          calc(100% - 48px)
+        );
+
+      margin: 0 auto;
+
+      padding:
+        54px 0 100px;
+
+    }
+
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================== */
+
+    .page-header {
+
+      margin-bottom: 66px;
+
+    }
+
+
+    .page-title {
+
+      font-size:
+        clamp(
+          42px,
+          4vw,
+          52px
+        );
+
+      line-height: 1;
+
+      letter-spacing: -.045em;
+
+      font-weight: 500;
+
+    }
+
+
+    /* =========================================================
+       FILTERS
+    ========================================================== */
+
+    .blog-filters {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-bottom: 35px;
+
+    }
+
+
+    .filter-btn {
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 999px;
+
+      background: transparent;
+
+      color: #777;
+
+      padding:
+        8px 15px;
+
+      font-family: var(--font-mono);
+
+      font-size: 11px;
+
+      cursor: pointer;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease;
+
+    }
+
+
+    .filter-btn:hover {
+
+      color: var(--white);
+
+      border-color:
+        rgba(255,255,255,.28);
+
+    }
+
+
+    .filter-btn.active {
+
+      background: #eee;
+
+      color: #111;
+
+      border-color: #eee;
+
+    }
+
+
+    /* =========================================================
+       BLOG GRID
+    ========================================================== */
+
+    .blog-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 24px;
+
+    }
+
+
+    /* =========================================================
+       BLOG CARD
+    ========================================================== */
+
+    .blog-card {
+
+      position: relative;
+
+      display: block;
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 13px;
+
+      background:
+        rgba(20,20,20,.92);
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+
+    }
+
+
+    .blog-card:hover {
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        var(--border-hover);
+
+      background:
+        var(--card-hover);
+
+    }
+
+
+    /* =========================================================
+       THUMBNAIL
+    ========================================================== */
+
+    .blog-thumb {
+
+      position: relative;
+
+      height: 195px;
+
+      overflow: hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 72% 22%,
+          rgba(255,255,255,.24),
+          transparent 34%
+        ),
+
+        radial-gradient(
+          circle at 58% 38%,
+          rgba(255,255,255,.08),
+          transparent 45%
+        ),
+
+        linear-gradient(
+          135deg,
+          #0d0d0d,
+          #292929
+        );
+
+    }
+
+
+    .blog-thumb::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+
+        linear-gradient(
+          115deg,
+          transparent 25%,
+          rgba(255,255,255,.035) 50%,
+          transparent 70%
+        );
+
+    }
+
+
+    .blog-thumb::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        repeating-linear-gradient(
+          180deg,
+          transparent 0px,
+          transparent 3px,
+          rgba(255,255,255,.012) 4px
+        );
+
+      opacity: .5;
+
+    }
+
+
+    /* =========================================================
+       CATEGORY LABEL
+    ========================================================== */
+
+    .blog-cat {
+
+      position: absolute;
+
+      top: 12px;
+
+      left: 12px;
+
+      z-index: 3;
+
+      padding:
+        6px 9px;
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      border-radius: 4px;
+
+      background:
+        rgba(5,5,5,.82);
+
+      color: #ddd;
+
+      font-family: var(--font-mono);
+
+      font-size: 9px;
+
+      line-height: 1;
+
+    }
+
+
+    /* =========================================================
+       THUMBNAIL DECORATION
+    ========================================================== */
+
+    .thumb-orb {
+
+      position: absolute;
+
+      width: 54px;
+
+      height: 54px;
+
+      right: -2px;
+
+      bottom: -2px;
+
+      border:
+        1px solid rgba(255,255,255,.30);
+
+      border-radius: 50%;
+
+      opacity: .7;
+
+    }
+
+
+    .thumb-dot {
+
+      position: absolute;
+
+      width: 7px;
+
+      height: 7px;
+
+      left: 87px;
+
+      top: 119px;
+
+      border-radius: 50%;
+
+      background: #ddd;
+
+    }
+
+
+    .thumb-lines {
+
+      position: absolute;
+
+      width: 80px;
+
+      height: 80px;
+
+      right: -25px;
+
+      bottom: 35px;
+
+      opacity: .25;
+
+      transform:
+        rotate(25deg);
+
+      background:
+
+        repeating-linear-gradient(
+          45deg,
+          transparent 0 6px,
+          rgba(255,255,255,.7) 7px 8px
+        );
+
+    }
+
+
+    /* =========================================================
+       BLOG BODY
+    ========================================================== */
+
+    .blog-body {
+
+      padding:
+        20px;
+
+    }
+
+
+    .blog-meta {
+
+      margin-bottom: 13px;
+
+      color: #777;
+
+      font-family: var(--font-mono);
+
+      font-size: 10px;
+
+    }
+
+
+    .blog-title {
+
+      margin-bottom: 10px;
+
+      color: #eee;
+
+      font-size: 16px;
+
+      font-weight: 600;
+
+      line-height: 1.5;
+
+      letter-spacing: -.015em;
+
+    }
+
+
+    .blog-desc {
+
+      min-height: 48px;
+
+      margin-bottom: 20px;
+
+      color: #777;
+
+      font-size: 13px;
+
+      line-height: 1.55;
+
+    }
+
+
+    .blog-read {
+
+      display: inline-block;
+
+      color: #ddd;
+
+      font-family: var(--font-mono);
+
+      font-size: 10px;
+
+      font-weight: 500;
+
+      transition:
+        color .2s ease;
+
+    }
+
+
+    .blog-card:hover .blog-read {
+
+      color: #fff;
+
+    }
+
+
+    /* =========================================================
+       HIDDEN FILTER ITEMS
+    ========================================================== */
+
+    .blog-card.hidden {
+
+      display: none;
+
+    }
+
+
+    /* =========================================================
+       DETAIL PAGE
+    ========================================================== */
+
+    #articlePage {
+
+      display: none;
+
+    }
+
+
+    #articlePage.active {
+
+      display: block;
+
+    }
+
+
+    #listingPage.hidden {
+
+      display: none;
+
+    }
+
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================== */
+
+    .article-top {
+
+      padding-top: 30px;
+
+      margin-bottom: 38px;
+
+    }
+
+
+    .back-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 35px;
+
+      color: #777;
+
+      font-family: var(--font-mono);
+
+      font-size: 10px;
+
+      transition:
+        color .2s ease;
+
+    }
+
+
+    .back-link:hover {
+
+      color: #eee;
+
+    }
+
+
+    .article-category {
+
+      margin-bottom: 13px;
+
+      color: #888;
+
+      font-family: var(--font-mono);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+
+    }
+
+
+    .article-title {
+
+      max-width: 850px;
+
+      margin-bottom: 17px;
+
+      color: #eee;
+
+      font-size:
+        clamp(
+          35px,
+          5vw,
+          58px
+        );
+
+      font-weight: 500;
+
+      line-height: 1.08;
+
+      letter-spacing: -.045em;
+
+    }
+
+
+    .article-meta {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      color: #666;
+
+      font-family: var(--font-mono);
+
+      font-size: 10px;
+
+    }
+
+
+    /* =========================================================
+       ARTICLE TAGS
+    ========================================================== */
+
+    .article-tags {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin:
+        0 0 35px;
+
+      padding-bottom: 25px;
+
+      border-bottom:
+        1px solid var(--border);
+
+    }
+
+
+    .article-tag {
+
+      padding:
+        7px 11px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 999px;
+
+      background: transparent;
+
+      color: #777;
+
+      font-family: var(--font-mono);
+
+      font-size: 9px;
+
+      cursor: pointer;
+
+      transition:
+        color .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+
+    }
+
+
+    .article-tag:hover {
+
+      color: #eee;
+
+      border-color:
+        rgba(255,255,255,.3);
+
+    }
+
+
+    .article-tag.active {
+
+      color: #111;
+
+      background: #eee;
+
+      border-color: #eee;
+
+    }
+
+
+    /* =========================================================
+       ARTICLE HERO
+    ========================================================== */
+
+    .article-hero {
+
+      position: relative;
+
+      height: 330px;
+
+      overflow: hidden;
+
+      margin-bottom: 45px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 13px;
+
+      background:
+
+        radial-gradient(
+          circle at 72% 20%,
+          rgba(255,255,255,.22),
+          transparent 30%
+        ),
+
+        linear-gradient(
+          135deg,
+          #0b0b0b,
+          #282828
+        );
+
+    }
+
+
+    .article-hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+
+        repeating-linear-gradient(
+          0deg,
+          transparent 0 5px,
+          rgba(255,255,255,.02) 6px
+        );
+
+    }
+
+
+    .article-hero-glyph {
+
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color:
+        rgba(255,255,255,.055);
+
+      font-size:
+        clamp(
+          80px,
+          14vw,
+          180px
+        );
+
+      font-weight: 700;
+
+      letter-spacing: -.07em;
+
+    }
+
+
+
+
+    .article-hero-image {
+
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      z-index: 2;
+
+    }
+    /* =========================================================
+       ARTICLE CONTENT
+    ========================================================== */
+
+    .article-layout {
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 760px)
+        220px;
+
+      justify-content:
+        space-between;
+
+      gap: 60px;
+
+    }
+
+
+    .article-content {
+
+      color: #999;
+
+      font-size: 14px;
+
+      line-height: 1.9;
+
+    }
+
+
+    .article-content p {
+
+      margin-bottom: 24px;
+
+    }
+
+
+    .article-content h2 {
+
+      margin:
+        52px 0 18px;
+
+      color: #eee;
+
+      font-size: 24px;
+
+      font-weight: 600;
+
+      line-height: 1.25;
+
+      letter-spacing: -.025em;
+
+    }
+
+
+    .article-content h3 {
+
+      margin:
+        35px 0 14px;
+
+      color: #ddd;
+
+      font-size: 17px;
+
+      font-weight: 600;
+
+    }
+
+
+    .article-content ul {
+
+      margin:
+        20px 0 28px;
+
+      padding-left: 22px;
+
+    }
+
+
+    .article-content li {
+
+      margin-bottom: 9px;
+
+    }
+
+
+    .article-content strong {
+
+      color: #ddd;
+
+      font-weight: 600;
+
+    }
+
+
+    .article-content code {
+
+      padding:
+        2px 5px;
+
+      border-radius: 3px;
+
+      background: #111;
+
+      color: #ccc;
+
+      font-family: var(--font-mono);
+
+      font-size: 11px;
+
+    }
+
+
+    .article-content pre {
+
+      overflow-x: auto;
+
+      margin:
+        25px 0;
+
+      padding: 20px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 7px;
+
+      background: #090909;
+
+    }
+
+
+    .article-content pre code {
+
+      padding: 0;
+
+      background: transparent;
+
+      color: #aaa;
+
+      line-height: 1.7;
+
+    }
+.post-hero{
+  width:100%;
+  height:420px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#080808;
+}
+
+.post-hero img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+    /* =========================================================
+       ARTICLE SIDEBAR
+    ========================================================== */
+
+    .article-sidebar {
+
+      position: sticky;
+
+      top: 80px;
+
+      align-self: start;
+
+    }
+
+
+    .sidebar-title {
+
+      margin-bottom: 13px;
+
+      color: #777;
+
+      font-family: var(--font-mono);
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+
+    }
+
+
+    .sidebar-line {
+
+      height: 1px;
+
+      margin-bottom: 15px;
+
+      background:
+        var(--border);
+
+    }
+
+
+    .sidebar-item {
+
+      display: block;
+
+      margin-bottom: 13px;
+
+      color: #666;
+
+      font-family: var(--font-mono);
+
+      font-size: 10px;
+
+      line-height: 1.5;
+
+      transition:
+        color .2s ease;
+
+    }
+
+
+    .sidebar-item:hover {
+
+      color: #eee;
+
+    }
+
+
+    /* =========================================================
+       ARTICLE BOTTOM NAVIGATION
+    ========================================================== */
+
+    .article-navigation {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 15px;
+
+      margin-top: 70px;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid var(--border);
+
+    }
+
+
+    .article-nav-button {
+
+      display: block;
+
+      padding: 18px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #0d0d0d;
+
+      transition:
+        border-color .25s ease,
+        background .25s ease;
+
+    }
+
+
+    .article-nav-button:hover {
+
+      border-color:
+        var(--border-hover);
+
+      background: #141414;
+
+    }
+
+
+    .article-nav-label {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #555;
+
+      font-family: var(--font-mono);
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .article-nav-title {
+
+      color: #ccc;
+
+      font-size: 12px;
+
+      line-height: 1.4;
+
+    }
+
+
+    .article-nav-next {
+
+      text-align: right;
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+
+        gap: 18px;
+
+      }
+
+
+      .nav-links a {
+
+        font-size: 10px;
+
+      }
+
+
+      .blog-grid {
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+      }
+
+
+      .article-layout {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .article-sidebar {
+
+        display: none;
+
+      }
+
+    }
+
+
+    @media (max-width: 640px) {
+
+      .nav-inner {
+
+        width:
+          calc(100% - 28px);
+
+      }
+
+
+      .logo {
+
+        font-size: 15px;
+
+      }
+
+
+      .nav-links {
+
+        display: none;
+
+      }
+
+
+      .page {
+
+        width:
+          calc(100% - 28px);
+
+        padding-top: 78px;
+
+      }
+
+
+      .page-header {
+
+        margin-bottom: 40px;
+
+      }
+
+
+      .page-title {
+
+        font-size: 39px;
+
+      }
+
+
+      .blog-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .blog-thumb {
+
+        height: 210px;
+
+      }
+
+
+      .article-top {
+
+        padding-top: 15px;
+
+      }
+
+
+      .article-title {
+
+        font-size: 37px;
+
+      }
+
+
+      .article-hero {
+
+        height: 220px;
+
+        margin-bottom: 30px;
+
+      }
+
+
+      .article-content {
+
+        font-size: 13px;
+
+      }
+
+
+      .article-navigation {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .article-nav-next {
+
+        text-align: left;
+
+      }
+
+
+      /* Readable text + bigger tap targets on phones */
+
+      .filter-btn {
+
+        font-size: 12px;
+
+        padding: 9px 15px;
+
+      }
+
+
+      .blog-cat,
+      .article-nav-label {
+
+        font-size: 10px;
+
+      }
+
+
+      .blog-meta,
+      .article-category,
+      .article-meta,
+      .article-tag {
+
+        font-size: 11px;
+
+      }
+
+
+      .blog-read,
+      .back-link {
+
+        font-size: 12px;
+
+      }
+
+
+      .back-link {
+
+        padding: 6px 0;
+
+        margin-bottom: 24px;
+
+      }
+
+
+      .article-title {
+
+        font-size: clamp(28px, 8.5vw, 37px);
+
+      }
+
+
+      .article-content {
+
+        font-size: 15px;
+
+        line-height: 1.8;
+
+      }
+
+
+      .article-content h2 {
+
+        margin-top: 40px;
+
+        font-size: 21px;
+
+      }
+
+
+      .article-content code {
+
+        font-size: 12px;
+
+      }
+
+
+      .article-content pre {
+
+        padding: 14px;
+
+      }
+
+
+      .article-nav-title {
+
+        font-size: 14px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       NAVBAR
+  ========================================================== -->
+
+  <header class="navbar">
+
+    <div class="nav-inner">
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+        KARTHIKEYAN
+      </a>
+
+
+      <!-- <nav class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="index.html#about">
+          About
+        </a>
+
+        <a href="index.html#experience">
+          Experience
+        </a>
+
+        <a href="index.html#education">
+          Education
+        </a>
+
+        <a href="index.html#projects">
+          Projects
+        </a>
+
+        <a href="index.html#skills">
+          Skills
+        </a>
+
+        <a
+          href="blog.html"
+          class="active"
+        >
+          Blogs
+        </a>
+
+        <a href="index.html#contact">
+          Contact
+        </a>
+
+      </nav> -->
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================================================
+       MAIN PAGE
+  ========================================================== -->
+
+  <main class="page">
+
+
+    <!-- =======================================================
+         BLOG LISTING
+    ======================================================== -->
+
+    <section id="listingPage">
+
+
+      <header class="page-header">
+
+        <h1 class="page-title">
+          Notes from the editor.
+        </h1>
+
+      </header>
+
+
+
+      <!-- =====================================================
+           FILTERS
+      ====================================================== -->
+
+      <div class="blog-filters">
+
+        <button
+          class="filter-btn active"
+          data-filter="all"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="gamedev"
+        >
+          Game Dev
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="unreal"
+        >
+          Unreal Engine
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="programming"
+        >
+          Programming
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="ai"
+        >
+          AI
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="xr"
+        >
+          VR
+        </button>
+
+      </div>
+
+
+
+      <!-- =====================================================
+           BLOG GRID
+      ====================================================== -->
+
+      <div
+        class="blog-grid"
+        id="blogGrid"
+      >
+
+
+        <!-- BLOG 01 -->
+
+        <a
+          href="blog.html?post=unreal-journey"
+          class="blog-card"
+          data-cat="unreal"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              Unreal Engine
+            </span>
+
+            <span class="thumb-dot"></span>
+
+            <span class="thumb-orb"></span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              My Journey into Unreal Engine Development
+            </div>
+
+            <p class="blog-desc">
+              How I got started with Unreal Engine and what I'd
+              tell someone picking it up today.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- BLOG 02 -->
+
+        <a
+          href="blog.html?post=gameplay-systems"
+          class="blog-card"
+          data-cat="gamedev"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              Game Dev
+            </span>
+
+            <span class="thumb-lines"></span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              Building Gameplay Systems in Unreal Engine
+            </div>
+
+            <p class="blog-desc">
+              Breaking down how I structure save systems,
+              missions, and checkpoints so they scale.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- BLOG 03 -->
+
+        <a
+          href="blog.html?post=blueprint-vs-cpp"
+          class="blog-card"
+          data-cat="programming"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              Programming
+            </span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              Blueprint vs C++
+            </div>
+
+            <p class="blog-desc">
+              A practical framework for deciding what belongs
+              in Blueprints versus native code.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- BLOG 04 -->
+
+        <a
+          href="blog.html?post=ai-systems"
+          class="blog-card"
+          data-cat="ai"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              AI
+            </span>
+
+            <span class="thumb-dot"></span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              Creating Better AI in Unreal Engine
+            </div>
+
+            <p class="blog-desc">
+              Notes on behavior trees, perception, and making
+              enemies feel fair to play against.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- BLOG 05 -->
+
+        <a
+          href="blog.html?post=unreal-optimization"
+          class="blog-card"
+          data-cat="unreal"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              Unreal Engine
+            </span>
+
+            <span class="thumb-orb"></span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              Optimizing Unreal Engine Games
+            </div>
+
+            <p class="blog-desc">
+              Profiling and performance lessons from building
+              VR projects on real hardware.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- BLOG 06 -->
+
+        <a
+          href="blog.html?post=vr-development"
+          class="blog-card"
+          data-cat="xr"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              VR
+            </span>
+
+            <span class="thumb-lines"></span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              Building VR Experiences
+            </div>
+
+            <p class="blog-desc">
+              What changes when you design for VR — locomotion,
+              interaction, and comfort.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- BLOG 07 -->
+
+        <a
+          href="blog.html?post=learning-game-development"
+          class="blog-card"
+          data-cat="gamedev"
+        >
+
+          <div class="blog-thumb">
+
+            <span class="blog-cat">
+              Game Dev
+            </span>
+
+            <span class="thumb-dot"></span>
+
+            <span class="thumb-lines"></span>
+
+          </div>
+
+
+          <div class="blog-body">
+
+            <div class="blog-meta">
+              Coming soon
+            </div>
+
+            <div class="blog-title">
+              My Learning Journey in Game Development
+            </div>
+
+            <p class="blog-desc">
+              Reflections on the projects, mistakes, and mentors
+              that shaped how I build games.
+            </p>
+
+            <span class="blog-read">
+              Read Article →
+            </span>
+
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         ARTICLE PAGE
+    ======================================================== -->
+
+    <section
+      id="articlePage"
+    >
+
+      <!-- =====================================================
+           ARTICLE TOP
+      ====================================================== -->
+
+      <header class="article-top">
+
+                  <a
+              href="index.html#blogs"            
+              class="back-link"
+            id="backToHome"
+          >
+            ← BACK TO HOME
+          </a>
+
+
+        <div
+          class="article-category"
+          id="articleCategory"
+        >
+          Unreal Engine
+        </div>
+
+
+        <h1
+          class="article-title"
+          id="articleTitle"
+        >
+          My Journey into Unreal Engine Development
+        </h1>
+
+
+        <div
+          class="article-meta"
+          id="articleMeta"
+        >
+          <span>Comings soon</span>
+
+          <span>•</span>
+
+          <span>Unreal Engine</span>
+        </div>
+
+      </header>
+
+
+
+      <!-- =====================================================
+           ARTICLE TAG NAVIGATION
+      ====================================================== -->
+
+      <div
+        class="article-tags"
+        id="articleTags"
+      >
+
+        <button
+          class="article-tag"
+          data-post="unreal-journey"
+        >
+          Unreal Journey
+        </button>
+
+        <button
+          class="article-tag"
+          data-post="gameplay-systems"
+        >
+          Gameplay Systems
+        </button>
+
+        <button
+          class="article-tag"
+          data-post="blueprint-vs-cpp"
+        >
+          Blueprint vs C++
+        </button>
+
+        <button
+          class="article-tag"
+          data-post="ai-systems"
+        >
+          AI
+        </button>
+
+        <button
+          class="article-tag"
+          data-post="unreal-optimization"
+        >
+          Optimization
+        </button>
+
+        <button
+          class="article-tag"
+          data-post="vr-development"
+        >
+          VR
+        </button>
+
+        <button
+          class="article-tag"
+          data-post="learning-game-development"
+        >
+          Game Dev
+        </button>
+
+      </div>
+
+
+
+      <!-- =====================================================
+           ARTICLE HERO
+      ====================================================== -->
+
+      <div class="article-hero">
+
+        <img
+          class="article-hero-image"
+          id="articleHeroImage"
+          src="Images/Blogs/CSW.png"
+          alt="Unreal Engine"
+        >
+
+      </div>
+
+
+
+      <!-- =====================================================
+           ARTICLE CONTENT AREA
+      ====================================================== -->
+
+      <div class="article-layout">
+
+
+        <article
+          class="article-content"
+          id="articleContent"
+        >
+
+          <!-- Content inserted by JavaScript -->
+
+        </article>
+
+
+
+        <!-- ===================================================
+             SIDEBAR
+        ==================================================== -->
+
+        <aside class="article-sidebar">
+
+          <div class="sidebar-title">
+            Articles
+          </div>
+
+          <div class="sidebar-line"></div>
+
+
+          <a
+            href="blog.html?post=unreal-journey"
+            class="sidebar-item"
+          >
+            My Journey into Unreal Engine Development
+          </a>
+
+
+          <a
+            href="blog.html?post=gameplay-systems"
+            class="sidebar-item"
+          >
+            Building Gameplay Systems
+          </a>
+
+
+          <a
+            href="blog.html?post=blueprint-vs-cpp"
+            class="sidebar-item"
+          >
+            Blueprint vs C++
+          </a>
+
+
+          <a
+            href="blog.html?post=ai-systems"
+            class="sidebar-item"
+          >
+            Creating Better AI
+          </a>
+
+
+          <a
+            href="blog.html?post=unreal-optimization"
+            class="sidebar-item"
+          >
+            Optimizing Unreal Engine Games
+          </a>
+
+
+          <a
+            href="blog.html?post=vr-development"
+            class="sidebar-item"
+          >
+            Building VR Experiences
+          </a>
+
+
+          <a
+            href="blog.html?post=learning-game-development"
+            class="sidebar-item"
+          >
+            My Learning Journey
+          </a>
+
+        </aside>
+
+
+      </div>
+
+
+
+      <!-- =====================================================
+           PREVIOUS / NEXT
+      ====================================================== -->
+
+      <div class="article-navigation">
+
+        <a
+          href="#"
+          class="article-nav-button"
+          id="previousArticle"
+        >
+
+          <span class="article-nav-label">
+            ← Previous Article
+          </span>
+
+          <span
+            class="article-nav-title"
+            id="previousTitle"
+          >
+            Previous
+          </span>
+
+        </a>
+
+
+        <a
+          href="#"
+          class="article-nav-button article-nav-next"
+          id="nextArticle"
+        >
+
+          <span class="article-nav-label">
+            Next Article →
+          </span>
+
+          <span
+            class="article-nav-title"
+            id="nextTitle"
+          >
+            Next
+          </span>
+
+        </a>
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
+  <script>
+
+    /* =========================================================
+       BLOG DATA
+    ========================================================== */
+
+    const posts = {
+
+  "unreal-journey": {
+
+    category: "Unreal Engine",
+
+    title:
+      "My Journey into Unreal Engine Development",
+
+  heroImage: "Images/Blogs/Gp.png",
+
+    meta:
+      "Unreal Engine",
+
+    content: `
+
+      <p>
+        My journey into Unreal Engine began with something I have
+        always loved: <strong>movies</strong>.
+      </p>
+
+      <p>
+        I have always been fascinated by the worlds I see on screen.
+        But at some point, simply watching them was not enough.
+        I started wondering:
+      </p>
+
+      <p>
+        <strong>What if I could change the scene?</strong><br>
+        <strong>What if I could jump into the movie and become one of
+        the characters?</strong><br>
+        <strong>What if I could make a different decision, change the
+        outcome, or even fight the characters myself?</strong>
+      </p>
+
+      <p>
+        Those questions made me curious about interactive digital
+        worlds — worlds where I was no longer just an observer,
+        but someone who could actually participate and influence
+        what happens.
+      </p>
+
+      <p>
+        At the same time, I developed another interest:
+        <strong>recreating real-world things digitally</strong>.
+        I wanted to understand how real objects, environments,
+        interactions, and systems could be represented inside
+        a virtual world.
+      </p>
+
+      <p>
+        But I wasn't interested in simply creating a digital copy
+        of reality.
+      </p>
+
+      <p>
+        I wanted something beyond that.
+      </p>
+
+      <p>
+        I wanted to take the limitations of the real world and
+        push past them — to create things that may not be possible
+        physically, combine ideas that normally couldn't exist
+        together, and build experiences where the only real
+        limitation is what I can imagine and develop.
+      </p>
+
+      <p>
+        That curiosity eventually led me to
+        <strong>Unreal Engine</strong>.
+      </p>
+
+
+      <h2>
+        Getting Started
+      </h2>
+
+      <p>
+        When I first started learning Unreal Engine, I quickly
+        realized that it was much more than a tool for creating
+        graphics or building games.
+      </p>
+
+      <p>
+        I began learning how Actors, Components, Controllers,
+        Game Modes, Game States, and other parts of the Gameplay
+        Framework work together.
+      </p>
+
+      <p>
+        What started as experimentation slowly became a deeper
+        interest in understanding <strong>how interactive systems
+        are designed and how different systems communicate with
+        each other</strong>.
+      </p>
+
+
+      <h2>
+        Moving Into Gameplay Programming
+      </h2>
+
+      <p>
+        As my projects became more complex, I became increasingly
+        interested in gameplay programming and system architecture.
+      </p>
+
+      <p>
+        I started working with character controllers, interaction
+        systems, camera systems, UI, save systems, AI, and reusable
+        gameplay components.
+      </p>
+
+      <p>
+        This changed the way I approached development. Instead of
+        thinking only about how to make something work once,
+        I started thinking about how to build systems that are
+        <strong>reusable, scalable, and easier to extend</strong>.
+      </p>
+
+
+      <h2>
+        What I Learned
+      </h2>
+
+      <ul>
+
+        <li>
+          Unreal Engine's Gameplay Framework
+        </li>
+
+        <li>
+          Blueprint Visual Scripting
+        </li>
+
+        <li>
+          C++ gameplay programming
+        </li>
+
+        <li>
+          Character and camera systems
+        </li>
+
+        <li>
+          Interaction and gameplay systems
+        </li>
+
+        <li>
+          AI and behavior systems
+        </li>
+
+        <li>
+          UI and save systems
+        </li>
+
+        <li>
+          VR interaction and locomotion
+        </li>
+
+        <li>
+          Gameplay architecture and optimization
+        </li>
+
+      </ul>
+
+
+      <h2>
+        Learning Through Projects
+      </h2>
+
+      <p>
+        Projects became the most important part of my learning
+        process.
+      </p>
+
+      <p>
+        Following tutorials helped me understand the basics,
+        but building my own projects forced me to understand
+        what was actually happening.
+      </p>
+
+      <p>
+        Every project introduced a new problem.
+      </p>
+
+      <p>
+        Sometimes I had to figure out how two systems should
+        communicate. Sometimes I had to rethink the architecture.
+        Other times I had to find a way to make something
+        perform efficiently.
+      </p>
+
+      <p>
+        Those challenges taught me that development is not just
+        about writing code or creating assets.
+      </p>
+
+      <p>
+        It is about <strong>thinking, experimenting, breaking
+        things, solving problems, and continuously finding
+        better ways to build</strong>.
+      </p>
+
+
+      <h2>
+        Beyond Reality
+      </h2>
+
+      <p>
+        What continues to excite me about Unreal Engine is the
+        possibility of going beyond simply recreating reality.
+      </p>
+
+      <p>
+        I can take something familiar from the real world and ask:
+      </p>
+
+      <p>
+        <strong>What if it worked differently?</strong>
+      </p>
+
+      <p>
+        What if a physical limitation didn't exist?
+      </p>
+
+      <p>
+        What if a movie world could become interactive?
+      </p>
+
+      <p>
+        What if I could become the character instead of watching
+        the character?
+      </p>
+
+      <p>
+        What if a real-world object could be transformed into
+        something that could never exist physically?
+      </p>
+
+      <p>
+        That is what keeps me interested in Unreal Engine.
+      </p>
+
+      <p>
+        For me, Unreal Engine is not just a game engine.
+      </p>
+
+      <p>
+        It is a way to turn curiosity into interactive experiences
+        — to recreate the world, experiment with it, and then push
+        beyond what the real world allows.
+      </p>
+
+      <p>
+        And that is where I want to keep going:
+        <strong>building worlds where imagination is no longer
+        limited by physical reality.</strong>
+      </p>
+
+    `
+
+  },
+
+
+      "gameplay-systems": {
+
+  category: "Game Dev",
+
+  title:
+    "Building Gameplay Systems in Unreal Engine",
+
+          heroImage: "Images/Blogs/GPS.png",
+
+  meta:
+    "Game Dev",
+
+  content: `
+
+    <p>
+      For me, building gameplay systems is not just about making
+      a feature work.
+    </p>
+
+    <p>
+      It is about taking something that exists only in my mind —
+      an idea, a mechanic, a world, or a specific interaction —
+      and eventually seeing it become real on the screen.
+    </p>
+
+    <p>
+      There is a feeling of fulfillment that comes from that
+      process that is difficult to measure.
+    </p>
+
+    <p>
+      I can imagine a system working in a certain way, but the
+      real excitement comes when I finally implement it, interact
+      with it, and see my original vision actually functioning
+      inside the game.
+    </p>
+
+
+    <h2>
+      Turning Vision Into Systems
+    </h2>
+
+    <p>
+      As my projects became more complex, I realized that having
+      a good idea is only the beginning.
+    </p>
+
+    <p>
+      The real challenge is turning that idea into a functional,
+      reliable, and maintainable system.
+    </p>
+
+    <p>
+      Instead of putting everything into one Character class or
+      creating tightly connected gameplay logic, I started thinking
+      about systems in terms of their responsibilities.
+    </p>
+
+    <p>
+      I wanted each system to be easier to understand, debug,
+      extend, and reuse.
+    </p>
+
+    <p>
+      Unreal Engine gave me the tools and structure to approach
+      gameplay development this way.
+    </p>
+
+
+    <h2>
+      Bringing My Vision Into the Game
+    </h2>
+
+    <p>
+      One example is my <strong>Unseen</strong> game, where
+      character and state-switching systems were part of the
+      experience I had envisioned.
+    </p>
+
+    <p>
+      The idea existed in my mind first.
+    </p>
+
+    <p>
+      Building the system and finally seeing those transitions
+      happen inside the game created a huge sense of fulfillment.
+      It was the moment when something that had previously existed
+      only as an idea became an interactive reality.
+    </p>
+
+    <p>
+      That is one of the things I enjoy most about gameplay
+      programming:
+    </p>
+
+    <p>
+      <strong>
+        I can see my thoughts becoming systems.
+      </strong>
+    </p>
+
+
+    <h2>
+      Creating What Cannot Be Seen
+    </h2>
+
+    <p>
+      My interest becomes even stronger when working with VR and
+      recreating real-world environments.
+    </p>
+
+    <p>
+      I enjoy recreating things from the physical world digitally,
+      but I don't want to stop at simply reproducing what already
+      exists.
+    </p>
+
+    <p>
+      The digital world gives me the freedom to add things that
+      cannot normally be visualized or experienced in the physical
+      world.
+    </p>
+
+    <p>
+      I can take something real, understand how it works, recreate
+      it digitally, and then extend it beyond its physical
+      limitations.
+    </p>
+
+    <p>
+      That combination of
+      <strong>reality, imagination, and interaction</strong>
+      is what makes these projects exciting for me.
+    </p>
+
+
+    <h2>
+      Why Unreal Engine
+    </h2>
+
+    <p>
+      Unreal Engine helps me turn these ideas into functional
+      systems while maintaining the level of quality and
+      flexibility I want.
+    </p>
+
+    <p>
+      Its Gameplay Framework, Blueprint system, C++, components,
+      AI tools, VR capabilities, and optimization tools allow me
+      to focus not only on <em>what</em> I want to create, but also
+      on <em>how</em> I can build it properly.
+    </p>
+
+    <p>
+      For me, good gameplay architecture is about finding the
+      balance between
+      <strong>vision and engineering</strong>.
+    </p>
+
+    <p>
+      The vision defines what I want the experience to become.
+    </p>
+
+    <p>
+      The system determines whether I can actually build it.
+    </p>
+
+    <p>
+      And Unreal Engine gives me the environment to bring the two
+      together.
+    </p>
+
+
+    <h2>
+      The Goal
+    </h2>
+
+    <p>
+      My goal is not simply to build features that work.
+    </p>
+
+    <p>
+      I want to build systems that can support the experience I
+      imagine — systems that are flexible, efficient, maintainable,
+      and capable of growing as the idea grows.
+    </p>
+
+    <p>
+      Because the most satisfying part of development is seeing
+      something that once existed only in my imagination become
+      <strong>
+        functional, interactive, and real on the screen.
+      </strong>
+    </p>
+
+  `
+
+},
+
+
+      "blueprint-vs-cpp": {
+
+  category: "Programming",
+
+  title:
+    "Blueprint vs C++",
+
+  heroImage: "Images/Blogs/BP_VS_C.png",
+
+  meta:
+    "Programming",
+
+  content: `
+
+    <p>
+      One of the questions I encountered quite early in my Unreal
+      Engine journey was:
+    </p>
+
+    <p>
+      <strong>Should I build this in Blueprint or C++?</strong>
+    </p>
+
+    <p>
+      At first, I thought there should be a clear answer — that one
+      must be better than the other.
+    </p>
+
+    <p>
+      But as I started building more complex gameplay systems, I
+      realized that this is not really a question about which
+      language is better.
+    </p>
+
+    <p>
+      For me, the more important question is:
+    </p>
+
+    <p>
+      <strong>
+        What is the responsibility of this system, and what is the
+        best way to build it?
+      </strong>
+    </p>
+
+    <p>
+      I don't want the technology to dictate the design of the
+      system. I want the system's requirements to determine which
+      tool I use.
+    </p>
+
+
+    <h2>
+      Blueprint: Turning Ideas Into Something I Can See
+    </h2>
+
+    <p>
+      Blueprint is one of the things I enjoy most about working with
+      Unreal Engine because it allows me to move very quickly from
+      an idea in my mind to something I can actually see and interact
+      with.
+    </p>
+
+    <p>
+      When I have a gameplay idea, I often want to experiment with it
+      immediately.
+    </p>
+
+    <p>
+      I might want to test how a character should behave, how an
+      interaction should feel, how a state should change, or how a
+      gameplay event should trigger another system.
+    </p>
+
+    <p>
+      Blueprint gives me the ability to do that quickly.
+    </p>
+
+    <p>
+      I can build a prototype, play the game, observe the result,
+      change the logic, and test it again without spending too much
+      time on implementation overhead.
+    </p>
+
+    <p>
+      That rapid feedback is extremely valuable to me.
+    </p>
+
+    <p>
+      A system might look correct when I imagine it, but once I
+      actually play it, I may discover that the interaction doesn't
+      feel right or that the logic needs to work differently.
+    </p>
+
+    <p>
+      Blueprint allows me to iterate on those ideas very quickly.
+    </p>
+
+
+    <h3>
+      Where I Prefer Blueprint
+    </h3>
+
+    <ul>
+
+      <li>Rapid gameplay prototyping</li>
+
+      <li>Character and interaction logic</li>
+
+      <li>Designer-facing systems</li>
+
+      <li>UI and presentation logic</li>
+
+      <li>Animation-related gameplay behavior</li>
+
+      <li>Event-driven gameplay</li>
+
+      <li>Level-specific logic</li>
+
+      <li>Testing gameplay ideas quickly</li>
+
+      <li>Debugging gameplay flow visually</li>
+
+    </ul>
+
+    <p>
+      The visual nature of Blueprint also makes the flow of certain
+      gameplay systems easier for me to understand.
+    </p>
+
+    <p>
+      When I am dealing with a system that depends heavily on events
+      and interactions, being able to visually follow the execution
+      flow can make experimentation much faster.
+    </p>
+
+    <p>
+      For me, Blueprint is often the place where
+      <strong>ideas become playable</strong>.
+    </p>
+
+
+    <hr>
+
+
+    <h2>
+      C++: Building the Foundation
+    </h2>
+
+    <p>
+      As my projects became more complex, I started reaching
+      situations where I wanted more control over how systems were
+      structured.
+    </p>
+
+    <p>
+      This is where C++ became increasingly important.
+    </p>
+
+    <p>
+      I don't see C++ simply as a way to make things
+      <strong>"faster"</strong> than Blueprint.
+    </p>
+
+    <p>
+      For me, its biggest value is the ability to create a stronger
+      underlying architecture.
+    </p>
+
+    <p>
+      When I am building reusable gameplay systems, base classes,
+      core functionality, data structures, or systems that are going
+      to be used in multiple places, I often prefer to establish that
+      foundation in C++.
+    </p>
+
+    <p>
+      C++ gives me more control over the organization and
+      responsibilities of the code.
+    </p>
+
+    <p>
+      It also encourages me to think more carefully about interfaces,
+      dependencies, data ownership, and how different systems
+      communicate.
+    </p>
+
+    <p>
+      That becomes increasingly important as a project grows.
+    </p>
+
+    <p>
+      A system that works perfectly when it is small can become
+      difficult to maintain when more features are added.
+    </p>
+
+    <p>
+      So I started thinking beyond:
+    </p>
+
+    <p>
+      <strong>"Can I make this work?"</strong>
+    </p>
+
+    <p>
+      and more toward:
+    </p>
+
+    <p>
+      <strong>
+        "How will this system behave when the project becomes
+        ten times larger?"
+      </strong>
+    </p>
+
+    <p>
+      That change in thinking is one of the reasons I became more
+      interested in C++.
+    </p>
+
+
+    <h3>
+      Where I Prefer C++
+    </h3>
+
+    <ul>
+
+      <li>Core gameplay architecture</li>
+
+      <li>Reusable gameplay systems</li>
+
+      <li>Base classes</li>
+
+      <li>Complex data structures</li>
+
+      <li>Systems shared across multiple features</li>
+
+      <li>Performance-sensitive functionality</li>
+
+      <li>Lower-level engine interaction</li>
+
+      <li>Larger-scale gameplay frameworks</li>
+
+      <li>
+        Systems where I want stronger control over dependencies
+        and structure
+      </li>
+
+    </ul>
+
+    <p>
+      C++ gives me the foundation on which I can build more flexible
+      gameplay systems.
+    </p>
+
+
+    <h2>
+      I Don't See Them as Two Separate Worlds
+    </h2>
+
+    <p>
+      The more I worked with Unreal Engine, the more I realized that
+      I don't have to choose between Blueprint and C++.
+    </p>
+
+    <p>
+      They can work together extremely well.
+    </p>
+
+    <p>
+      One of my preferred approaches is to use
+      <strong>C++ for the foundation and Blueprint for the
+      iteration layer</strong>.
+    </p>
+
+    <p>
+      For example, I might create the core functionality of a
+      gameplay system in C++, expose the necessary properties and
+      functions to Unreal's reflection system, and then use
+      Blueprint to configure or extend the behavior.
+    </p>
+
+    <p>
+      This gives me both structure and flexibility.
+    </p>
+
+    <p>
+      C++ can handle the underlying architecture while Blueprint
+      allows me to experiment with how that architecture is used
+      in the actual gameplay experience.
+    </p>
+
+    <p>
+      This is particularly useful for me because I care about both
+      sides of development.
+    </p>
+
+    <p>
+      I want the system to be technically well designed, but I also
+      want to be able to quickly experiment with the experience.
+    </p>
+
+
+    <h2>
+      Thinking About Responsibility First
+    </h2>
+
+    <p>
+      My approach has gradually changed from asking:
+    </p>
+
+    <p>
+      <strong>"Should I use Blueprint or C++?"</strong>
+    </p>
+
+    <p>
+      to asking:
+    </p>
+
+    <p>
+      <strong>
+        "What should this system be responsible for?"
+      </strong>
+    </p>
+
+    <p>
+      Once I understand the responsibility, the implementation
+      choice becomes much clearer.
+    </p>
+
+    <p>
+      If something needs frequent iteration and is primarily
+      gameplay-facing, Blueprint can be an excellent choice.
+    </p>
+
+    <p>
+      If something forms part of the core architecture or needs
+      to be highly reusable and structured, C++ may make more sense.
+    </p>
+
+    <p>
+      Sometimes the answer is both.
+    </p>
+
+    <p>
+      I might build the underlying system in C++ and expose the
+      parts that need to be customized through Blueprint.
+    </p>
+
+    <p>
+      This way, I don't have to sacrifice architecture for iteration
+      speed, or iteration speed for architecture.
+    </p>
+
+
+    <h2>
+      How This Fits My Way of Building
+    </h2>
+
+    <p>
+      This approach is especially important to me because most of
+      my projects start with an idea or a vision.
+    </p>
+
+    <p>
+      I don't always know exactly how the final system will work
+      when I begin.
+    </p>
+
+    <p>
+      I need the freedom to experiment.
+    </p>
+
+    <p>
+      I want to take something that exists in my mind and gradually
+      turn it into something functional on the screen.
+    </p>
+
+    <p>
+      Blueprint gives me that freedom to experiment quickly.
+    </p>
+
+    <p>
+      But once I understand what the system needs to become, I also
+      want to make sure that the implementation can support the
+      project as it grows.
+    </p>
+
+    <p>
+      That's where C++ becomes important.
+    </p>
+
+    <p>
+      So my workflow is not necessarily:
+    </p>
+
+    <p>
+      <strong>Blueprint vs C++</strong>
+    </p>
+
+    <p>
+      It is more like:
+    </p>
+
+    <p>
+      <strong>
+        Idea → Prototype → Understand the system →
+        Build the architecture → Iterate → Optimize → Refine
+      </strong>
+    </p>
+
+    <p>
+      The tools can change at different stages of that process.
+    </p>
+
+
+    <h2>
+      Performance Is Only One Part of the Decision
+    </h2>
+
+    <p>
+      Performance is another factor I consider, but I don't want
+      to reduce the Blueprint vs C++ decision to performance alone.
+    </p>
+
+    <p>
+      A well-designed system is more important than simply moving
+      everything into C++.
+    </p>
+
+    <p>
+      If I have a small gameplay feature that is easy to understand
+      and does not create a meaningful performance problem,
+      rewriting it in C++ just because <strong>"C++ is faster"</strong>
+      may not actually improve the project.
+    </p>
+
+    <p>
+      On the other hand, if a system is heavily used,
+      computationally expensive, or sits in a critical part of
+      the gameplay architecture, then I may need to think more
+      carefully about its implementation.
+    </p>
+
+    <p>
+      This is why I prefer to understand the actual problem before
+      optimizing.
+    </p>
+
+    <p>
+      I want to know
+      <strong>what needs to be optimized and why</strong>
+      rather than optimizing everything by default.
+    </p>
+
+
+    <h2>
+      My Philosophy
+    </h2>
+
+    <p>
+      Over time, I have stopped thinking of Blueprint and C++ as
+      competing choices.
+    </p>
+
+    <p>
+      They are different ways of solving different parts of the
+      same problem.
+    </p>
+
+    <p>
+      <strong>
+        Blueprint gives me speed, visibility, and freedom to
+        experiment.
+      </strong>
+    </p>
+
+    <p>
+      <strong>
+        C++ gives me structure, control, and a strong foundation
+        for complex systems.
+      </strong>
+    </p>
+
+    <p>
+      And Unreal Engine allows me to combine both.
+    </p>
+
+    <p>
+      For me, the goal isn't to prove that I can build everything
+      in C++ or everything in Blueprint.
+    </p>
+
+    <p>
+      The goal is to build the system in the way that best supports
+      the experience I am trying to create.
+    </p>
+
+    <p>
+      Because ultimately, the language is only a tool.
+    </p>
+
+    <p>
+      <strong>
+        The real challenge is taking the vision in my mind and
+        turning it into a system that actually works.
+      </strong>
+    </p>
+
+  `
+
+},
+      "ai-systems": {
+
+        category: "AI",
+
+        title:
+          "Creating Better AI in Unreal Engine",
+
+          heroImage: "Images/Blogs/CSW.png",
+
+        meta:
+          "Coming soon • AI",
+
+        content: `
+
+          <h2>
+            Coming soon
+          </h2>
+          
+        `
+
+      },
+
+
+      "unreal-optimization": {
+
+        category: "Unreal Engine",
+
+        title:
+          "Optimizing Unreal Engine Games",
+
+        heroImage: "Images/Blogs/CSW.png",
+
+
+        glyph: "FPS",
+
+        meta:
+          "Coming soon • Unreal Engine",
+
+        content: `
+
+        <h2>
+            Coming soon
+          </h2>
+          
+        `
+
+      },
+
+// VR 
+
+
+      "vr-development": {
+
+  category: "VR",
+
+  title:
+    "Building VR Experiences",
+
+  heroImage: "Images/Blogs/VR.png",
+
+  meta:
+    "VR",
+
+  content: `
+
+    <p>
+      VR became especially interesting to me because it feels much
+      closer to the way I naturally imagine experiences.
+    </p>
+
+    <p>
+      I have always been drawn to the real world — the way things
+      look, behave, and interact. But I also have my own perspectives
+      and ideas about how those worlds could be experienced
+      differently.
+    </p>
+
+    <p>
+      I wanted a medium where I could take the world around me,
+      add my perspective to it, and allow other people to experience
+      something through my eyes.
+    </p>
+
+    <p>
+      For me, <strong>VR became that medium.</strong>
+    </p>
+
+    <p>
+      It is not just about putting a virtual world in front of
+      someone.
+    </p>
+
+    <p>
+      It is about putting the person
+      <strong>inside the experience</strong>.
+    </p>
+
+
+    <h2>
+      A Different Way of Experiencing the World
+    </h2>
+
+    <p>
+      In a traditional game, I am usually controlling a character
+      from a screen.
+    </p>
+
+    <p>
+      In VR, the relationship changes.
+    </p>
+
+    <p>
+      I can look around naturally.
+    </p>
+
+    <p>
+      I can reach toward something.
+    </p>
+
+    <p>
+      I can interact with objects using my hands.
+    </p>
+
+    <p>
+      I can physically move my attention around the environment.
+    </p>
+
+    <p>
+      The experience becomes much more personal because the user is
+      no longer simply controlling something on a screen — they are
+      occupying the virtual space.
+    </p>
+
+    <p>
+      That opened up a completely different set of possibilities
+      for me.
+    </p>
+
+    <p>
+      I started thinking about how I could use that immersion to
+      communicate ideas and experiences that might be difficult to
+      express through a traditional game.
+    </p>
+
+
+    <h2>
+      Expressing My Perspective
+    </h2>
+
+    <p>
+      One of the things I like most about VR is that it gives me a
+      way to express things that are difficult to explain through
+      words alone.
+    </p>
+
+    <p>
+      There are ideas, experiences, and stories that can be
+      described verbally, but sometimes describing something is not
+      enough.
+    </p>
+
+    <p>
+      I want people to <strong>experience it</strong>.
+    </p>
+
+    <p>
+      Instead of telling someone how a place feels, I can create
+      the place.
+    </p>
+
+    <p>
+      Instead of explaining how an interaction happens, I can allow
+      them to perform it.
+    </p>
+
+    <p>
+      Instead of describing a perspective, I can put the person
+      inside that perspective.
+    </p>
+
+    <p>
+      That is what makes VR powerful for me.
+    </p>
+
+    <p>
+      It becomes another form of communication.
+    </p>
+
+
+    <h2>
+      Exploring What Reality Doesn't Allow
+    </h2>
+
+    <p>
+      Another reason I enjoy VR is the freedom to explore things
+      that I cannot experience in the physical world.
+    </p>
+
+    <p>
+      Reality has limitations.
+    </p>
+
+    <p>
+      Some things are too dangerous, too expensive, too large,
+      too small, physically impossible, or simply impossible to
+      experience from a particular perspective.
+    </p>
+
+    <p>
+      Inside a virtual environment, those limitations can be
+      questioned.
+    </p>
+
+    <p>
+      I can recreate something from the real world and then change
+      its rules.
+    </p>
+
+    <p>
+      I can take a familiar environment and introduce something
+      that could never physically exist there.
+    </p>
+
+    <p>
+      I can experiment with scale, movement, interaction,
+      perspective, physics, and environments in ways that would be
+      difficult or impossible in reality.
+    </p>
+
+    <p>
+      That ability to move between
+      <strong>reality and imagination</strong> is one of the things
+      that keeps me interested in VR development.
+    </p>
+
+
+    <h2>
+      Building Locomotion and Climbing in Distoria
+    </h2>
+
+    <p>
+      A practical example of this was my work on
+      <strong>Distoria</strong>, where I developed VR locomotion
+      and climbing systems.
+    </p>
+
+    <p>
+      Locomotion in VR is not simply about moving a character from
+      one position to another.
+    </p>
+
+    <p>
+      The movement needs to feel connected to the player's physical
+      presence while remaining responsive and comfortable.
+    </p>
+
+    <p>
+      Working on the locomotion system made me think carefully
+      about how movement should be controlled in an immersive
+      environment and how the player's physical input should
+      translate into movement inside the virtual world.
+    </p>
+
+    <p>
+      The climbing system pushed that idea further.
+    </p>
+
+    <p>
+      Instead of simply pressing a button to climb, I wanted the
+      interaction to feel more physical. The player's hand
+      interaction with the environment becomes part of the movement
+      itself.
+    </p>
+
+    <p>
+      Building this system required me to think about things such as:
+    </p>
+
+    <ul>
+
+      <li>
+        Detecting climbable surfaces
+      </li>
+
+      <li>
+        Hand and controller interaction
+      </li>
+
+      <li>
+        Attaching and releasing from climb points
+      </li>
+
+      <li>
+        Translating hand movement into player movement
+      </li>
+
+      <li>
+        Managing movement states
+      </li>
+
+      <li>
+        Preventing unwanted or unstable movement
+      </li>
+
+      <li>
+        Keeping the interaction responsive
+      </li>
+
+      <li>
+        Maintaining a comfortable VR experience
+      </li>
+
+    </ul>
+
+    <p>
+      What I found particularly interesting was how a relatively
+      simple idea —
+      <strong>"the player should be able to climb"</strong> —
+      becomes a much larger systems problem when you try to make it
+      feel natural.
+    </p>
+
+    <p>
+      It is not enough for the mechanic to technically work.
+    </p>
+
+    <p>
+      The interaction has to <strong>feel right</strong>.
+    </p>
+
+    <p>
+      That distinction is something I have learned repeatedly while
+      working with VR.
+    </p>
+
+
+    <h2>
+      Interaction
+    </h2>
+
+    <p>
+      Building VR experiences also changed how I think about
+      interaction.
+    </p>
+
+    <p>
+      A traditional interaction might be as simple as pressing
+      a button.
+    </p>
+
+    <p>
+      In VR, I have to think about what the user expects their
+      hands and body to do.
+    </p>
+
+    <p>
+      If I create an object that can be picked up, the interaction
+      needs to feel natural.
+    </p>
+
+    <p>
+      If the player reaches toward something, the response needs to
+      happen quickly and predictably.
+    </p>
+
+    <p>
+      The same principle applied to the climbing system in
+      <strong>Distoria</strong>.
+    </p>
+
+    <p>
+      The player should feel that their physical action is directly
+      connected to what happens in the virtual world.
+    </p>
+
+    <p>
+      Small delays, incorrect positioning, or unnatural responses
+      can immediately break immersion.
+    </p>
+
+    <p>
+      Because of that, I became more interested in designing
+      interaction systems around the user's physical presence rather
+      than simply adapting traditional game mechanics to VR.
+    </p>
+
+
+    <h2>
+      Locomotion
+    </h2>
+
+    <p>
+      Movement is one of the biggest challenges in VR.
+    </p>
+
+    <p>
+      In a normal game, moving the character is straightforward.
+    </p>
+
+    <p>
+      In VR, movement affects the player's physical perception,
+      so locomotion needs to be designed much more carefully.
+    </p>
+
+    <p>
+      Through my work on <strong>Distoria</strong>, I explored how
+      locomotion could balance
+      <strong>control, responsiveness, immersion, and comfort</strong>.
+    </p>
+
+    <p>
+      I had to think not only about how the player moves, but also
+      about how that movement is initiated, how different movement
+      states interact, and how the system responds to the player's
+      physical input.
+    </p>
+
+    <p>
+      This made locomotion more than a movement mechanic for me.
+    </p>
+
+    <p>
+      It became a complete gameplay system.
+    </p>
+
+
+    <h2>
+      VR UI
+    </h2>
+
+    <p>
+      VR also changed the way I think about interfaces.
+    </p>
+
+    <p>
+      A traditional HUD can simply exist on the screen.
+    </p>
+
+    <p>
+      But in VR, I can place information inside the environment
+      itself.
+    </p>
+
+    <p>
+      An interface can become part of the world rather than
+      something separate from it.
+    </p>
+
+    <p>
+      This allows me to think about UI as another part of the
+      experience instead of simply an overlay.
+    </p>
+
+    <p>
+      The environment, interaction, interface, and gameplay can all
+      become connected.
+    </p>
+
+
+    <h2>
+      Performance and Immersion
+    </h2>
+
+    <p>
+      VR also made me much more conscious of performance.
+    </p>
+
+    <p>
+      In a normal game, performance is important.
+    </p>
+
+    <p>
+      In VR, it becomes even more directly connected to the quality
+      of the experience.
+    </p>
+
+    <p>
+      Rendering cost, lighting, materials, environment complexity,
+      frame rate, and interaction responsiveness all contribute to
+      whether the experience feels immersive.
+    </p>
+
+    <p>
+      A technically impressive environment is not enough if the
+      experience does not run smoothly.
+    </p>
+
+    <p>
+      For me, optimization is therefore not just about achieving
+      better numbers.
+    </p>
+
+    <p>
+      It is about protecting the
+      <strong>sense of presence</strong> that makes VR special.
+    </p>
+
+
+    <h2>
+      Telling Stories That Are Difficult to Tell
+    </h2>
+
+    <p>
+      Perhaps the most important reason I continue exploring VR is
+      its potential for storytelling.
+    </p>
+
+    <p>
+      There are stories I may not be able to fully express through
+      words.
+    </p>
+
+    <p>
+      There are perspectives that are difficult to communicate
+      through a traditional screen.
+    </p>
+
+    <p>
+      There are experiences that become much more meaningful when
+      the audience is allowed to actually
+      <strong>stand inside them</strong>.
+    </p>
+
+    <p>
+      VR gives me a way to explore those possibilities.
+    </p>
+
+    <p>
+      I can build an environment, control what the user sees,
+      design how they interact with it, and create experiences
+      that communicate something through participation rather than
+      explanation.
+    </p>
+
+    <p>
+      That makes VR more than a technical platform for me.
+    </p>
+
+    <p>
+      It becomes a way of expressing ideas.
+    </p>
+
+
+    <h2>
+      Why VR Matters to Me
+    </h2>
+
+    <p>
+      For me, VR sits somewhere between
+      <strong>reality, imagination, and expression</strong>.
+    </p>
+
+    <p>
+      I can start with something from the real world.
+    </p>
+
+    <p>
+      I can add my own perspective.
+    </p>
+
+    <p>
+      I can introduce things that reality would never allow.
+    </p>
+
+    <p>
+      And I can give someone else the opportunity to experience
+      that world from within.
+    </p>
+
+    <p>
+      My work on <strong>Distoria</strong>, particularly the
+      locomotion and climbing systems, showed me how technical
+      systems can directly influence that feeling of presence.
+    </p>
+
+    <p>
+      The code, interaction logic, movement, and physical response
+      are not separate from the experience.
+    </p>
+
+    <p>
+      They <strong>create the experience</strong>.
+    </p>
+
+    <p>
+      That is what makes VR so exciting to me.
+    </p>
+
+    <p>
+      I am not only trying to recreate reality.
+    </p>
+
+    <p>
+      <strong>
+        I want to recreate it, reinterpret it, and sometimes go
+        beyond it.
+      </strong>
+    </p>
+
+    <p>
+      And if there is a story, idea, or experience that I cannot
+      properly express through words, I want to find a way to build
+      it — so that instead of simply telling someone about it,
+      <strong>I can let them experience it.</strong>
+    </p>
+
+  `
+
+},
+
+//game dev
+      "learning-game-development": {
+
+  category: "Game Dev",
+
+  title:
+    "My Learning Journey in Game Development",
+
+  heroImage: "Images/Blogs/GDev.png",
+
+  meta:
+    "Game Dev",
+
+  content: `
+
+    <p>
+      When I first started working with Unreal Engine,
+      <strong>game development was not really my goal.</strong>
+    </p>
+
+    <p>
+      I initially came to Unreal Engine because I wanted a way to
+      visualize the ideas and experiences that existed in my mind.
+    </p>
+
+    <p>
+      I wanted to recreate things from the real world, build
+      environments, experiment with interactions, and turn ideas
+      into something I could actually see.
+    </p>
+
+    <p>
+      But somewhere along that process, something changed.
+    </p>
+
+    <p>
+      I started enjoying the process of
+      <strong>building the systems themselves.</strong>
+    </p>
+
+    <p>
+      What started as visualization gradually became an interest in
+      gameplay programming, system design, interaction, AI, VR,
+      optimization, and the technical side of creating interactive
+      experiences.
+    </p>
+
+    <p>
+      In a way, I didn't initially choose game development.
+    </p>
+
+    <p>
+      <strong>Game development slowly caught me.</strong>
+    </p>
+
+
+    <h2>
+      From Visualization to Building
+    </h2>
+
+    <p>
+      When I started, Blueprint was the part of Unreal Engine that
+      I connected with the most.
+    </p>
+
+    <p>
+      It gave me an immediate way to take an idea from my head and
+      put it into the engine.
+    </p>
+
+    <p>
+      I could create something, press Play, see it working, find
+      something that didn't feel right, change it, and try again.
+    </p>
+
+    <p>
+      That immediate feedback made the learning process exciting.
+    </p>
+
+    <p>
+      Instead of spending a long time thinking about whether an idea
+      was possible, I could simply build a version of it and find
+      out.
+    </p>
+
+    <p>
+      Blueprint became a major part of my early Unreal Engine
+      journey because it allowed me to
+      <strong>turn ideas into reality quickly.</strong>
+    </p>
+
+    <p>
+      And the more I built, the more I wanted to understand what was
+      happening underneath those systems.
+    </p>
+
+
+    <h2>
+      Discovering C++
+    </h2>
+
+    <p>
+      As my projects became more complex, I started realizing that
+      Blueprint alone was not always the approach I wanted.
+    </p>
+
+    <p>
+      I began exploring C++ because I wanted more control over the
+      architecture, reusability, and optimization of my systems.
+    </p>
+
+    <p>
+      Fortunately, I already had experience with web and application
+      development, so concepts such as programming structures,
+      object-oriented programming, classes, inheritance, and
+      abstraction were not completely new to me.
+    </p>
+
+    <p>
+      That background helped me understand C++ more naturally.
+    </p>
+
+    <p>
+      The transition wasn't simply about learning another
+      programming language.
+    </p>
+
+    <p>
+      It changed the way I thought about Unreal Engine development.
+    </p>
+
+    <p>
+      I started paying more attention to
+      <strong>how systems are structured</strong>, how
+      responsibilities are separated, how different parts of a game
+      communicate, and how I could create systems that would remain
+      manageable as the project grew.
+    </p>
+
+    <p>
+      Eventually, my workflow became a combination of Blueprint and
+      C++ rather than treating them as alternatives.
+    </p>
+
+    <p>
+      Blueprint gave me the speed to experiment.
+    </p>
+
+    <p>
+      C++ gave me more control over the underlying systems.
+    </p>
+
+    <p>
+      Together, they allowed me to move from simply visualizing ideas
+      to building more structured gameplay systems.
+    </p>
+
+
+    <h2>
+      Learning Through Projects
+    </h2>
+
+    <p>
+      Projects became one of the biggest parts of my learning
+      process.
+    </p>
+
+    <p>
+      Tutorials gave me a starting point, but they could not
+      prepare me for every problem I would encounter when building
+      something of my own.
+    </p>
+
+    <p>
+      A tutorial can show you how a particular system works.
+    </p>
+
+    <p>
+      A real project forces you to answer questions like:
+    </p>
+
+    <p>
+      <strong>
+        How should this system communicate with another system?
+      </strong>
+    </p>
+
+    <p>
+      <strong>
+        What happens when something goes wrong?
+      </strong>
+    </p>
+
+    <p>
+      <strong>
+        What should happen when the project becomes more complex?
+      </strong>
+    </p>
+
+    <p>
+      <strong>
+        How can I change this feature later without breaking
+        everything else?
+      </strong>
+    </p>
+
+    <p>
+      Those are the problems I found most valuable.
+    </p>
+
+    <p>
+      Every project gave me something different to solve, and those
+      problems gradually changed how I approached development.
+    </p>
+
+
+    <h2>
+      Learning From Things That Break
+    </h2>
+
+    <p>
+      Some of my most valuable lessons came from systems that simply
+      <strong>didn't work the way I expected them to.</strong>
+    </p>
+
+    <p>
+      Sometimes the implementation was wrong.
+    </p>
+
+    <p>
+      Sometimes the architecture needed to change.
+    </p>
+
+    <p>
+      Sometimes a system worked in one situation but completely
+      failed in another.
+    </p>
+
+    <p>
+      Instead of seeing those situations only as failures, I started
+      treating them as part of the development process.
+    </p>
+
+    <p>
+      One example was the character and state system I developed for
+      <strong>Unseen</strong>.
+    </p>
+
+    <p>
+      The system started as an idea for how I wanted the character
+      and its different states to behave.
+    </p>
+
+    <p>
+      Turning that idea into a functioning system required
+      experimentation, debugging, and iteration.
+    </p>
+
+    <p>
+      It didn't become a decent system simply because I knew exactly
+      how to build it from the beginning.
+    </p>
+
+    <p>
+      I had to try things, find problems, rethink parts of the
+      implementation, and continue improving it until the system
+      started behaving the way I envisioned.
+    </p>
+
+    <p>
+      That experience taught me something important:
+    </p>
+
+    <p>
+      <strong>
+        A good system is often the result of many iterations,
+        not a perfect first attempt.
+      </strong>
+    </p>
+
+
+    <h2>
+      Understanding Architecture
+    </h2>
+
+    <p>
+      As I worked on more projects, I began to understand that
+      gameplay programming is not only about making individual
+      features work.
+    </p>
+
+    <p>
+      The bigger challenge is making those features work
+      <strong>together.</strong>
+    </p>
+
+    <p>
+      I became more conscious of:
+    </p>
+
+    <ul>
+
+      <li>
+        Separating responsibilities
+      </li>
+
+      <li>
+        Reusable components
+      </li>
+
+      <li>
+        Gameplay architecture
+      </li>
+
+      <li>
+        Communication between systems
+      </li>
+
+      <li>
+        Debugging
+      </li>
+
+      <li>
+        Profiling
+      </li>
+
+      <li>
+        Performance
+      </li>
+
+      <li>
+        Data management
+      </li>
+
+      <li>
+        Maintainability
+      </li>
+
+      <li>
+        Extensibility
+      </li>
+
+    </ul>
+
+    <p>
+      I started asking myself not only:
+    </p>
+
+    <p>
+      <strong>
+        "Does this work?"
+      </strong>
+    </p>
+
+    <p>
+      but also:
+    </p>
+
+    <p>
+      <strong>
+        "How easily can I change this later?"
+      </strong>
+    </p>
+
+    <p>
+      and:
+    </p>
+
+    <p>
+      <strong>
+        "What happens when I add another feature?"
+      </strong>
+    </p>
+
+    <p>
+      That change in mindset was an important part of my growth.
+    </p>
+
+
+    <h2>
+      Learning From the Unreal Community
+    </h2>
+
+    <p>
+      Another part of my journey that I genuinely value is the
+      Unreal Engine community.
+    </p>
+
+    <p>
+      Whenever I ran into a problem, there was often someone who
+      had already faced something similar.
+    </p>
+
+    <p>
+      The Unreal Engine documentation, community discussions,
+      examples, and shared knowledge became an important part of how
+      I learned.
+    </p>
+
+    <p>
+      I don't think learning game development means knowing
+      everything by yourself.
+    </p>
+
+    <p>
+      For me, it means knowing how to
+      <strong>
+        investigate a problem, find reliable information,
+        understand it, and apply it to my own system.
+      </strong>
+    </p>
+
+    <p>
+      That process of searching, experimenting, and validating
+      solutions has become a major part of how I develop.
+    </p>
+
+
+    <h2>
+      From Making Things Work to Making Them Better
+    </h2>
+
+    <p>
+      In the beginning, my main goal was simple:
+    </p>
+
+    <p>
+      <strong>Make it work.</strong>
+    </p>
+
+    <p>
+      Later, that changed to:
+    </p>
+
+    <p>
+      <strong>Make it work properly.</strong>
+    </p>
+
+    <p>
+      And now I increasingly think:
+    </p>
+
+    <p>
+      <strong>
+        How can I make it clean, reusable, efficient, and scalable?
+      </strong>
+    </p>
+
+    <p>
+      That progression represents a big part of my learning journey.
+    </p>
+
+    <p>
+      I still enjoy the excitement of seeing an idea become
+      functional for the first time.
+    </p>
+
+    <p>
+      But now I also enjoy looking at the system behind that idea
+      and thinking about how I can improve it.
+    </p>
+
+
+    <h2>
+      What Game Development Taught Me
+    </h2>
+
+    <p>
+      Game development has taught me much more than how to use
+      Unreal Engine.
+    </p>
+
+    <p>
+      It has taught me to experiment.
+    </p>
+
+    <p>
+      To break things.
+    </p>
+
+    <p>
+      To debug.
+    </p>
+
+    <p>
+      To research.
+    </p>
+
+    <p>
+      To question my first approach.
+    </p>
+
+    <p>
+      To rethink architecture.
+    </p>
+
+    <p>
+      To keep iterating when something doesn't work.
+    </p>
+
+    <p>
+      And most importantly, it taught me that an idea is only the
+      beginning.
+    </p>
+
+    <p>
+      The real satisfaction comes from taking that idea, building it
+      piece by piece, solving the problems along the way, and
+      eventually seeing it become something that another person can
+      actually experience.
+    </p>
+
+    <p>
+      That is probably the biggest change in my journey.
+    </p>
+
+    <p>
+      I started Unreal Engine because I wanted to
+      <strong>visualize my vision.</strong>
+    </p>
+
+    <p>
+      I stayed because I discovered that I genuinely enjoy
+      <strong>
+        building the systems that make that vision possible.
+      </strong>
+    </p>
+
+
+    <h2>
+      What's Next
+    </h2>
+
+    <p>
+      I want to continue pushing further into gameplay programming
+      and technical game development.
+    </p>
+
+    <p>
+      There is still a lot I want to explore — more complex gameplay
+      systems, AI, VR interactions, optimization, simulation, and
+      ways of creating experiences that go beyond what is possible
+      in the physical world.
+    </p>
+
+    <p>
+      I don't see my learning journey as something that has a final
+      destination.
+    </p>
+
+    <p>
+      There will always be another system to understand, another
+      problem to solve, another idea to experiment with.
+    </p>
+
+    <p>
+      And that is what makes the journey exciting for me.
+    </p>
+
+    <p>
+      <strong>
+        I started by trying to visualize the ideas in my mind.
+      </strong>
+    </p>
+
+    <p>
+      <strong>
+        Now I want to keep learning how to build the systems that
+        can bring those ideas to life.
+      </strong>
+    </p>
+
+  `
+
+},
+
+    };
+
+    /* =========================================================
+       POST ORDER
+    ========================================================== */
+
+    const postOrder = [
+
+      "unreal-journey",
+
+      "gameplay-systems",
+
+      "blueprint-vs-cpp",
+
+      "ai-systems",
+
+      "unreal-optimization",
+
+      "vr-development",
+
+      "learning-game-development"
+
+    ];
+
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================== */
+
+    const listingPage =
+      document.getElementById("listingPage");
+
+    const articlePage =
+      document.getElementById("articlePage");
+
+    const articleCategory =
+      document.getElementById("articleCategory");
+
+    const articleTitle =
+      document.getElementById("articleTitle");
+
+    const articleMeta =
+      document.getElementById("articleMeta");
+
+    const articleHeroImage =
+      document.getElementById("articleHeroImage");
+
+    const articleContent =
+      document.getElementById("articleContent");
+
+    const articleTags =
+      document.querySelectorAll(".article-tag");
+
+    const previousArticle =
+      document.getElementById("previousArticle");
+
+    const nextArticle =
+      document.getElementById("nextArticle");
+
+    const previousTitle =
+      document.getElementById("previousTitle");
+
+    const nextTitle =
+      document.getElementById("nextTitle");
+
+
+    /* =========================================================
+       SHOW ARTICLE
+    ========================================================== */
+
+    function showArticle(
+      postId,
+      updateUrl = true
+    ) {
+
+      if (!posts[postId]) {
+
+        postId =
+          postOrder[0];
+
+      }
+
+
+      const post =
+        posts[postId];
+
+
+      /* -----------------------------------------------
+         Hide listing
+      ------------------------------------------------ */
+
+      listingPage.classList.add(
+        "hidden"
+      );
+
+
+      /* -----------------------------------------------
+         Show article
+      ------------------------------------------------ */
+
+      articlePage.classList.add(
+        "active"
+      );
+
+
+      /* -----------------------------------------------
+         Fill article
+      ------------------------------------------------ */
+
+      articleCategory.textContent =
+        post.category;
+
+      articleTitle.textContent =
+        post.title;
+
+      articleMeta.textContent =
+        post.meta;
+
+      articleHeroImage.src =
+        post.heroImage || "Images/Blogs/CSW.png";
+
+      articleHeroImage.alt =
+        post.title;
+
+      articleContent.innerHTML =
+        post.content;
+
+
+      /* -----------------------------------------------
+         Search engines: title, description, address
+      ------------------------------------------------ */
+
+      document.title =
+        `${post.title} | Karthi, Game Developer`;
+
+      const firstParagraph =
+        articleContent.querySelector("p");
+
+      document.getElementById("metaDescription").content =
+        firstParagraph
+          ? firstParagraph.textContent.replace(/\s+/g, " ").trim().slice(0, 155)
+          : `${post.title} – a game development article by Karthi (Karthikeyan R V).`;
+
+      document.getElementById("canonicalLink").href =
+        `https://karthikeyan078.github.io/DevPortfolio/blog.html?post=${postId}`;
+
+
+      /* -----------------------------------------------
+         Active article tag
+      ------------------------------------------------ */
+
+      articleTags.forEach(tag => {
+
+        tag.classList.toggle(
+          "active",
+          tag.dataset.post === postId
+        );
+
+      });
+
+
+      /* -----------------------------------------------
+         Previous / Next
+      ------------------------------------------------ */
+
+      const currentIndex =
+        postOrder.indexOf(postId);
+
+
+      const previousIndex =
+        currentIndex === 0
+          ? postOrder.length - 1
+          : currentIndex - 1;
+
+
+      const nextIndex =
+        currentIndex === postOrder.length - 1
+          ? 0
+          : currentIndex + 1;
+
+
+      const previousId =
+        postOrder[previousIndex];
+
+      const nextId =
+        postOrder[nextIndex];
+
+
+      previousArticle.href =
+        `blog.html?post=${previousId}`;
+
+      nextArticle.href =
+        `blog.html?post=${nextId}`;
+
+
+      previousTitle.textContent =
+        posts[previousId].title;
+
+      nextTitle.textContent =
+        posts[nextId].title;
+
+
+      /* -----------------------------------------------
+         URL
+      ------------------------------------------------ */
+
+      if (updateUrl) {
+
+        history.pushState(
+          {
+            post: postId
+          },
+          "",
+          `blog.html?post=${postId}`
+        );
+
+      }
+
+
+      /* -----------------------------------------------
+         Scroll top
+      ------------------------------------------------ */
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =========================================================
+       SHOW LISTING
+    ========================================================== */
+
+    function showListing(
+      updateUrl = true
+    ) {
+
+      articlePage.classList.remove(
+        "active"
+      );
+
+      listingPage.classList.remove(
+        "hidden"
+      );
+
+      document.title =
+        "Game Development Blog | Karthi (Karthikeyan R V) – Unreal Engine";
+
+      document.getElementById("canonicalLink").href =
+        "https://karthikeyan078.github.io/DevPortfolio/blog.html";
+
+
+      if (updateUrl) {
+
+        history.pushState(
+          {},
+          "",
+          "blog.html"
+        );
+
+      }
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =========================================================
+       ARTICLE TAG CLICK
+    ========================================================== */
+
+    articleTags.forEach(tag => {
+
+      tag.addEventListener(
+        "click",
+        () => {
+
+          showArticle(
+            tag.dataset.post
+          );
+
+        }
+      );
+
+    });
+
+
+    /* =========================================================
+       FILTERS
+    ========================================================== */
+
+    const filterButtons =
+      document.querySelectorAll(
+        ".filter-btn"
+      );
+
+    const blogCards =
+      document.querySelectorAll(
+        ".blog-card"
+      );
+
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const filter =
+            button.dataset.filter;
+
+
+          /* Active button */
+
+          filterButtons.forEach(
+            item => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          /* Cards */
+
+          blogCards.forEach(card => {
+
+            const category =
+              card.dataset.cat;
+
+
+            if (
+              filter === "all" ||
+              category === filter
+            ) {
+
+              card.classList.remove(
+                "hidden"
+              );
+
+            } else {
+
+              card.classList.add(
+                "hidden"
+              );
+
+            }
+
+          });
+
+        }
+      );
+
+    });
+
+
+    /* =========================================================
+       BROWSER BACK BUTTON
+    ========================================================== */
+
+    window.addEventListener(
+      "popstate",
+      () => {
+
+        const params =
+          new URLSearchParams(
+            window.location.search
+          );
+
+
+        const post =
+          params.get("post");
+
+
+        if (
+          post &&
+          posts[post]
+        ) {
+
+          showArticle(
+            post,
+            false
+          );
+
+        } else {
+
+          showListing(
+            false
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       INITIAL PAGE
+    ========================================================== */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const initialPost =
+      params.get("post");
+
+
+    if (
+      initialPost &&
+      posts[initialPost]
+    ) {
+
+      showArticle(
+        initialPost,
+        false
+      );
+
+    } else {
+
+      showListing(
+        false
+      );
+
+    }
+
+  </script>
+
+</body>
+
+</html>

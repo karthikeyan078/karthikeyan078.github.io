@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Game Development Projects | Karthi (Karthikeyan R V) – Game Developer</title>
+<meta name="description" id="metaDescription" content="Game development projects by Karthi (Karthikeyan R V), Unreal Engine gameplay programmer: stealth AI, VR exploration, cinematic camera systems and more.">
+<meta name="author" content="Karthikeyan R V (Karthi)">
+<link rel="canonical" id="canonicalLink" href="https://karthikeyan078.github.io/DevPortfolio/project.html">
+
+<link rel="icon" href="Images/Hero/Favicon/Karthi%20favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="Images/Hero/Favicon/Karthi%20favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Images/Hero/Favicon/Karthi%20favicon-16x16.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Karthi – Game Developer">
+<meta property="og:title" content="Game Development Projects | Karthi (Karthikeyan R V)">
+<meta property="og:description" content="Unreal Engine projects by Karthi: gameplay systems, AI, VR and camera systems built with UE5, C++ and Blueprints.">
+<meta property="og:image" content="https://karthikeyan078.github.io/DevPortfolio/Images/General/Unseen.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#070707;
+    --surface:#111214;
+    --surface-2:#17181b;
+    --white:#f3f3f3;
+    --muted:#8d8f93;
+    --line:rgba(255,255,255,.12);
+    --soft-line:rgba(255,255,255,.08);
+
+    --font-display:'Manrope',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--font-display);
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:300px;
+
+    position:relative;
+    overflow:hidden;
+
+    border-bottom:1px solid var(--line);
+
+    padding:30px;
+
+    display:flex;
+    align-items:flex-end;
+}
+
+
+.hero:before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 8% 30%,
+            rgba(0,0,0,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 60% 0%,
+            rgba(0,0,0,.3),
+            transparent 32%
+        ),
+        linear-gradient(
+            110deg,
+            #07101a,
+            #080b10 50%,
+            #10080d
+        );
+}
+
+
+.hero:after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    opacity:.25;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:44px 44px;
+}
+
+
+.hero-inner{
+    position:relative;
+    z-index:2;
+
+    width:min(1180px,100%);
+
+    margin:auto;
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+.back{
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    color:#92959a;
+
+    font-family:var(--font-mono);
+
+    font-size:9px;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
+}
+
+.back:hover{
+    color:#fff;
+}
+
+
+/* =========================================================
+   HERO STATUS
+========================================================= */
+
+.status-label{
+    margin-bottom:5px;
+
+    color:#d7d7d7;
+
+    font-family:var(--font-mono);
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:.09em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+
+    line-height:.94;
+
+    letter-spacing:-.055em;
+
+    margin-bottom:14px;
+}
+
+
+/* =========================================================
+   HERO SUMMARY
+========================================================= */
+
+.hero p{
+    max-width:1000px;
+
+    color:#a2a4a8;
+
+    font-family:var(--font-mono);
+
+    font-size:9px;
+
+    line-height:1.7;
+
+    letter-spacing:.035em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+    width:min(1180px,calc(100% - 60px));
+
+    margin:auto;
+
+    padding:34px 0 100px;
+}
+
+
+/* =========================================================
+   PROJECT NAVIGATION
+========================================================= */
+
+.project-nav{
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:34px;
+}
+
+.project-nav button{
+    border:1px solid var(--line);
+
+    background:transparent;
+
+    color:#898b8f;
+
+    border-radius:999px;
+
+    padding:8px 13px;
+
+    cursor:pointer;
+
+    font-family:var(--font-mono);
+
+    font-size:9px;
+
+    transition:.25s;
+}
+
+.project-nav button:hover,
+.project-nav button.active{
+    color:#fff;
+
+    border-color:rgba(255,255,255,.55);
+
+    background:#151619;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.layout{
+    display:grid;
+
+    grid-template-columns:minmax(0,1fr) 300px;
+
+    gap:32px;
+
+    align-items:start;
+}
+
+.content{
+    min-width:0;
+}
+
+
+/* =========================================================
+   LEAD
+========================================================= */
+
+.lead{
+    max-width:760px;
+
+    padding-bottom:30px;
+
+    border-bottom:1px solid var(--line);
+
+    color:#eee;
+
+    font-size:15px;
+
+    line-height:1.75;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   PROJECT SECTIONS
+========================================================= */
+
+.project-block{
+    margin-top:36px;
+}
+
+.section-title{
+    margin:0 0 14px;
+
+    font-size:18px;
+
+    line-height:1.2;
+
+    letter-spacing:-.02em;
+}
+
+.rule{
+    height:1px;
+
+    background:var(--line);
+
+    margin-bottom:22px;
+}
+
+
+/* =========================================================
+   NORMAL TEXT
+========================================================= */
+
+.body-text{
+    max-width:760px;
+
+    color:#bfc1c5;
+
+    font-size:14px;
+
+    line-height:1.85;
+
+    margin-bottom:14px;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+.content-list{
+    max-width:760px;
+
+    margin:0 0 10px 20px;
+
+    color:#bfc1c5;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.content-list li{
+    padding-left:4px;
+
+    font-size:14px;
+
+    line-height:1.75;
+}
+
+.content-list.ordered{
+    list-style:decimal;
+}
+
+
+/* =========================
+   MEDIA GALLERY — OLD STYLE
+========================= */
+
+.gallery-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 10px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #47494d transparent;
+}
+
+.gallery-track::-webkit-scrollbar {
+    height: 7px;
+}
+
+.gallery-track::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gallery-track::-webkit-scrollbar-thumb {
+    background: #47494d;
+    border-radius: 99px;
+}
+
+
+/* FIXED CARD SIZE */
+
+.gallery-card {
+    position: relative;
+
+    flex: 0 0 255px;
+    width: 255px;
+    height: 250px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--soft-line);
+    border-radius: 8px;
+
+    background: #111214;
+}
+
+
+/* IMAGE */
+
+.gallery-card img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    opacity: .9;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+
+/* DARK GRADIENT FOR CAPTION */
+
+.gallery-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 80px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+
+    pointer-events: none;
+}
+
+
+/* CAPTION */
+
+.gallery-caption {
+    position: absolute;
+
+    z-index: 3;
+
+    left: 12px;
+    right: 12px;
+    bottom: 11px;
+
+    color: #d2d2d2;
+
+    font-family: var(--font-mono);
+    font-size: 8px;
+
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+
+/* HOVER */
+
+.gallery-card:hover img {
+    transform: scale(1.04);
+    opacity: 1;
+}
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.info-card{
+    position:sticky;
+
+    top:24px;
+
+    padding:16px;
+
+    border:1px solid var(--line);
+
+    border-radius:13px;
+
+    background:var(--surface-2);
+}
+
+
+/* =========================================================
+   HAVE A LOOK LINK
+========================================================= */
+
+.look-link{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    width:100%;
+
+    padding:11px 12px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    border-radius:7px;
+
+    background:#101114;
+
+    color:#e8e8e8;
+
+    font-family:var(--font-mono);
+
+    font-size:9px;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.look-link:hover{
+    background:#202125;
+
+    border-color:rgba(255,255,255,.45);
+
+    color:#fff;
+
+    transform:translateY(-1px);
+}
+
+.look-arrow{
+    font-size:12px;
+
+    opacity:.7;
+}
+
+
+/* =========================================================
+   SIDEBAR INFORMATION
+========================================================= */
+
+.info-group{
+    margin-top:22px;
+}
+
+.info-card > .info-group:first-child{
+    margin-top:0;
+}
+
+.label{
+    margin-bottom:7px;
+
+    color:#6f7175;
+
+    font-family:var(--font-mono);
+
+    font-size:8px;
+
+    letter-spacing:.09em;
+
+    text-transform:uppercase;
+}
+
+.value{
+    color:#eee;
+
+    font-size:11px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   TECHNOLOGY TAGS
+========================================================= */
+
+.tags{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:5px;
+}
+
+.tag{
+    padding:4px 6px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    border-radius:3px;
+
+    background:#101114;
+
+    color:#aaa;
+
+    font-family:var(--font-mono);
+
+    font-size:7px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status{
+    font-size:10px;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   PROJECT SWITCHING
+========================================================= */
+
+.project-section{
+    display:none;
+}
+
+.project-section.active{
+    display:block;
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT
+========================================================= */
+
+.next{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-top:45px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--line);
+}
+
+.next button{
+    border:0;
+
+    background:none;
+
+    color:#aaa;
+
+    cursor:pointer;
+
+    font-family:var(--font-mono);
+
+    font-size:9px;
+}
+
+.next button:hover{
+    color:#fff;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .info-card{
+        position:static;
+
+        order:-1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .hero{
+        min-height:260px;
+
+        padding:25px 20px;
+    }
+
+    .page{
+        width:calc(100% - 36px);
+
+        padding-top:24px;
+    }
+
+    .gallery-card{
+        flex-basis:225px;
+
+        height:280px;
+    }
+
+    .lead{
+        font-size:14px;
+    }
+
+    .body-text,
+    .content-list li{
+        font-size:13px;
+    }
+
+    .next{
+        flex-direction:column;
+    }
+
+    .look-link{
+        padding:12px;
+    }
+
+    /* Readable text + bigger tap targets on phones */
+
+    .back{
+        font-size:11px;
+        padding:6px 0;
+    }
+
+    .status-label{
+        font-size:10px;
+    }
+
+    .hero h1{
+        font-size:clamp(34px,11vw,56px);
+    }
+
+    .hero p{
+        font-size:11px;
+    }
+
+    .project-nav button{
+        font-size:11px;
+        padding:9px 14px;
+    }
+
+    .section-title{
+        font-size:17px;
+    }
+
+    .gallery-track{
+        scroll-snap-type:x mandatory;
+    }
+
+    .gallery-card{
+        flex:0 0 78vw;
+        width:78vw;
+        height:auto;
+        aspect-ratio:4/3;
+        scroll-snap-align:start;
+    }
+
+    .gallery-caption{
+        font-size:10px;
+    }
+
+    .look-link{
+        font-size:11px;
+    }
+
+    .label{
+        font-size:10px;
+    }
+
+    .value{
+        font-size:13px;
+    }
+
+    .tag{
+        font-size:10px;
+        padding:5px 8px;
+    }
+
+    .status{
+        font-size:12px;
+    }
+
+    .next button{
+        font-size:11px;
+        padding:8px 0;
+        text-align:left;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="hero-inner">
+
+        <a
+            href="index.html#projects"       
+                class="back"
+        >
+            ← Back to portfolio
+        </a>
+
+
+        <div
+            class="status-label"
+            id="heroStatus"
+        >
+            Completed
+        </div>
+
+
+        <h1 id="heroTitle">
+            UnSeen
+        </h1>
+
+
+        <p id="heroSummary"></p>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN PAGE
+===================================================== -->
+
+<main class="page">
+
+
+    <!-- PROJECT NAVIGATION -->
+
+    <nav
+        class="project-nav"
+        id="projectNav"
+    ></nav>
+
+
+    <!-- PROJECT CONTAINER -->
+
+    <div
+        id="projectContainer"
+    ></div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   PROJECT DATA
+========================================================= */
+
+const projects = [
+
+/* =========================================================
+   01 — UNSEEN
+========================================================= */
+
+{
+    id:"unseen",
+
+    title:"UnSeen",
+
+    short:"UN",
+
+    status:"Ongoing",
+
+    type:"Third-Person Story-Driven Stealth",
+
+    role:"Gameplay Programmer",
+
+    /*
+        CHANGE THIS LINK
+        TO YOUR ACTUAL PROJECT PAGE / VIDEO / BUILD
+    */
+    lookLink:"https://drive.google.com/file/d/1h0qRa9jbJdg2BXuahUyalmW6Ho9i1qiE/view?usp=drive_link",
+
+    summary:
+    "Developed a third-person, story-driven stealth game featuring character-state switching, AI systems, stealth detection, mission progression, checkpoints, hazards, and overall game-state management using Unreal Engine Blueprints.",
+
+    lead:
+    "UnSeen is a third-person, story-driven stealth game built around a unique character state-switching mechanic, allowing the player to transition between human and object forms to navigate environments and overcome stealth-based challenges. I contributed to the development of core gameplay systems, AI behaviors, mission progression, and interactive world mechanics using Unreal Engine Blueprints.",
+
+
+    challenge:[
+
+        "Creating a reliable character state-switching system between human and object forms.",
+
+        "Developing AI behavior capable of supporting stealth-focused gameplay.",
+
+        "Implementing detection, mission, checkpoint, hazard, and game-state systems that work together seamlessly.",
+
+        "Maintaining scalable gameplay architecture using Unreal Engine Blueprints."
+
+    ],
+
+
+    solutions:[
+
+        "I developed the Character State Switching system, enabling transitions between human and object states as a core gameplay mechanic.",
+
+        "I also implemented Child AI, stealth detection, mission progression, checkpoint management, hazard systems, and overall game-state management.",
+
+        "Gameplay data and configurations were structured using Data Assets, while character animation and PDA systems were integrated into the overall gameplay framework."
+
+    ],
+
+
+    process:[
+
+        "Analyzed gameplay requirements and established the core gameplay architecture.",
+
+        "Developed the character state-switching system between human and object forms.",
+
+        "Implemented AI and stealth detection systems.",
+
+        "Developed mission, checkpoint, hazard, and game-state systems.",
+
+        "Integrated Data Assets, character animation, and PDA functionality.",
+
+        "Tested and refined gameplay systems to improve stability and player experience."
+
+    ],
+
+
+    technologies:[
+
+        "Unreal Engine",
+
+        "Blueprints",
+
+        "AI",
+
+        "Data Assets",
+
+        "Character Animation",
+
+        "PDA System"
+
+    ],
+
+
+   gallery:[
+    ["Images/Projects/Unseen/Char.jpg", "Character / Gameplay"],
+    ["Images/Projects/Unseen/Char2.jpg", "Character State"],
+    ["Images/Projects/Unseen/drop.jpg", "Drop System"],
+    ["Images/Projects/Unseen/fly.jpg", "Flying Mechanic"],
+    ["Images/Projects/Unseen/fly1.jpg", "Flying Gameplay"],
+    ["Images/Projects/Unseen/pick.jpg", "Pick Up System"]
+]
+},
+
+
+/* =========================================================
+   02 — DISTORIA
+========================================================= */
+
+{
+    id:"distoria",
+
+    title:"Distoria",
+
+    short:"DI",
+
+    status:"Completed",
+
+    type:"VR Exploration",
+
+    role:"VR / Gameplay Programmer",
+
+    lookLink:"", // add a video / build link here to show the "Have a look" button
+
+    summary:
+    "Developed an immersive VR exploration game featuring locomotion, climbing, sliding, object interaction, shield mechanics, and physics-based traversal inspired by Half-Life: Alyx.",
+
+    lead:
+    "Distoria is a VR exploration experience focused on immersive movement and physical interaction. I recreated and implemented a variety of VR traversal mechanics, allowing players to climb, slide, carry objects, interact with physics-based environments, and use shield mechanics within a VR space.",
+
+
+    challenge:[
+
+        "Creating comfortable and responsive VR locomotion.",
+
+        "Recreating immersive traversal mechanics inspired by modern VR titles.",
+
+        "Handling physics-based interactions and object manipulation in VR.",
+
+        "Ensuring gameplay systems performed reliably on Meta Quest hardware."
+
+    ],
+
+
+    solutions:[
+
+        "I developed multiple VR traversal systems including climbing, sliding, object carrying, shield mechanics, and physics-based interactions.",
+
+        "The systems were implemented using Unreal Engine Blueprints and optimized for an immersive VR experience on Meta Quest."
+
+    ],
+
+
+    process:[
+
+        "Studied existing VR locomotion and traversal approaches.",
+
+        "Implemented core VR movement and interaction systems.",
+
+        "Developed climbing and sliding mechanics.",
+
+        "Added object carrying and physics-based interactions.",
+
+        "Implemented shield mechanics.",
+
+        "Tested and optimized the experience for Meta Quest."
+
+    ],
+
+
+    technologies:[
+
+        "Unreal Engine",
+
+        "Blueprints",
+
+        "VR",
+
+        "Meta Quest",
+
+        "VR Locomotion",
+
+        "Physics"
+
+    ],
+
+
+    gallery:[
+    ["Images/Projects/Distoria/Climb.png", "Climbing"],
+    ["Images/Projects/Distoria/climb2.png", "Climbing System"],
+    ["Images/Projects/Distoria/Movement Half Life.png", "Movement"],
+    ["Images/Projects/Distoria/Teleport.png", "Teleportation"]
+]
+},
+
+
+/* =========================================================
+   03 — LITTLE NIGHTMARES CAMERA
+========================================================= */
+
+{
+    id:"little-nightmare-camera",
+
+    title:"Little Nightmares Camera System",
+
+    short:"LN",
+
+    status:"Completed",
+
+    type:"Dynamic Cinematic Camera System",
+
+    role:"Gameplay Programmer",
+
+    lookLink:"https://drive.google.com/file/d/11fwKDqakD_T2nGiycWBV2hiEW_V2zyLD/view?usp=drive_link",
+
+    summary:
+    "Recreated the dynamic cinematic camera system from Little Nightmares, including side-scrolling, hallway, vent, vertical, and trigger-based camera behaviors.",
+
+    lead:
+    "This project focused on recreating the distinctive camera presentation used in Little Nightmares, where camera positioning dynamically changes based on the player's environment and gameplay situation. I developed multiple camera systems designed to create cinematic framing while maintaining controlled player navigation.",
+
+
+    challenge:[
+
+        "Creating a camera system that dynamically adapts to different environments.",
+
+        "Reproducing cinematic side-scrolling presentation.",
+
+        "Handling transitions between horizontal, vertical, hallway, and confined spaces.",
+
+        "Creating reliable camera switching through environmental triggers."
+
+    ],
+
+
+    solutions:[
+
+        "I developed several camera configurations and transition systems, including side-scrolling, hallway, vent, vertical, and trigger-based cameras.",
+
+        "Camera zones and trigger volumes were used to control camera behavior based on the player's position and environment."
+
+    ],
+
+
+    process:[
+
+        "Studied the camera behavior and presentation style of Little Nightmares.",
+
+        "Designed different camera zones for various gameplay situations.",
+
+        "Implemented side-scrolling and cinematic camera behavior.",
+
+        "Developed hallway, vent, and vertical camera systems.",
+
+        "Added trigger-based camera switching.",
+
+        "Tested camera transitions across different gameplay environments."
+
+    ],
+
+
+    technologies:[
+
+        "Unreal Engine 5",
+
+        "Camera Zones",
+
+        "Trigger Volumes",
+
+        "Blueprints"
+
+    ],
+
+
+    gallery:[
+    ["Images/Projects/LNM/Camera transistion.png", "Camera Transition"],
+    ["Images/Projects/LNM/HAll Way.png", "Hallway Camera"],
+    ["Images/Projects/LNM/Large Area.png", "Large Area Camera"],
+    ["Images/Projects/LNM/Look Around.png", "Look Around"],
+    ["Images/Projects/LNM/Normal Area.png", "Normal Area Camera"],
+    ["Images/Projects/LNM/Vent area.png", "Vent Area"]
+]
+},
+
+
+/* =========================================================
+   04 — GAUNTLET OF THE KNIGHT
+========================================================= */
+
+{
+    id:"gauntlet",
+
+    title:"Gauntlet of the Knight",
+
+    short:"GK",
+
+    status:"Completed",
+
+    type:"Medieval Precision Platformer",
+
+    role:"Gameplay Programmer",
+
+    lookLink:"https://drive.google.com/file/d/106vrF1bfmLnl2tThLvBjYY0Va6mMK6Je/view?usp=drive_link",
+
+    summary:
+    "Developed a medieval precision platformer featuring C++-based obstacle systems, checkpoint and respawn mechanics, kill zones, and gameplay flow systems.",
+
+    lead:
+    "Gauntlet of the Knight is a medieval precision platformer focused on challenging movement, environmental obstacles, and precise player execution. I developed core gameplay systems in C++, including interactive obstacles, checkpoint progression, player respawning, kill zones, and gameplay flow.",
+
+
+    challenge:[
+
+        "Creating responsive obstacle systems for precision platforming.",
+
+        "Implementing reliable checkpoint and respawn functionality.",
+
+        "Handling player failure through environmental kill zones.",
+
+        "Managing gameplay progression and state transitions."
+
+    ],
+
+
+    solutions:[
+
+        "I implemented the game's core obstacle systems using C++, along with checkpoint and respawn mechanics to support repeated platforming attempts.",
+
+        "Kill zones were developed to detect player failure and trigger the appropriate respawn flow."
+
+    ],
+
+
+    process:[
+
+        "Designed the gameplay flow and core platforming systems.",
+
+        "Developed interactive obstacle systems in C++.",
+
+        "Implemented checkpoint functionality.",
+
+        "Created player respawn and failure handling.",
+
+        "Added kill zones and gameplay state management.",
+
+        "Tested obstacle interactions and overall gameplay flow."
+
+    ],
+
+
+    technologies:[
+
+        "Unreal Engine",
+
+        "C++",
+
+        "Gameplay Systems",
+
+        "Checkpoints",
+
+        "Respawn Systems"
+
+    ],
+
+
+    gallery:[
+    ["Images/Projects/GON/Checkpoints.jpg", "Checkpoints"],
+    ["Images/Projects/GON/Endpoint.jpg", "Endpoint"],
+    ["Images/Projects/GON/intro.jpg", "Introduction"],
+    ["Images/Projects/GON/Moving Platform.jpg", "Moving Platform"],
+    ["Images/Projects/GON/Rotating platform.jpg", "Rotating Platform"],
+    ["Images/Projects/GON/Sping Platform.jpg", "Spring Platform"]
+]
+},
+
+
+/* =========================================================
+   05 — POUCH OF TIMS
+========================================================= */
+
+{
+    id:"pouch-of-tims",
+
+    title:"Pouch of Tims",
+
+    short:"PT",
+
+    status:"Ongoing",
+
+    type:"2.5D Adventure",
+
+    role:"Gameplay Programmer",
+
+    lookLink:"", // add a video / build link here to show the "Have a look" button
+
+    summary:
+    "Worked on a 2.5D adventure game featuring custom gameplay systems, in-game UI, a 3D main menu, custom camera behavior, and save/load functionality.",
+
+    lead:
+    "Pouch of Tims is a 2.5D adventure game combining side-scrolling gameplay with 3D environments and custom gameplay systems. I contributed to the development of the game's UI, main menu, camera system, save/load functionality, and gameplay features.",
+
+
+    challenge:[
+
+        "Creating a custom 2.5D camera suitable for the gameplay perspective.",
+
+        "Building an interactive UI and 3D main menu.",
+
+        "Implementing reliable save and load functionality.",
+
+
+    ],
+
+
+    solutions:[
+
+        "I developed the in-game UI, a 3D main menu, and a custom 2.5D camera system designed specifically for the game's perspective.",
+
+        "I also implemented the save/load system and contributed to various gameplay features required for the adventure experience."
+
+    ],
+
+
+    process:[
+
+        "Designed the UI structure and gameplay HUD.",
+
+        "Developed the 3D main menu experience.",
+
+        "Implemented the custom 2.5D camera system.",
+
+        "Developed save and load functionality.",
+
+        "Integrated gameplay features with the existing game architecture.",
+
+        "Tested UI, camera behavior, and persistence systems."
+
+    ],
+
+
+    technologies:[
+
+        "Unreal Engine",
+
+        "UI / UMG",
+
+        "Save / Load Systems",
+
+        "2.5D Camera",
+
+        "Blueprints"
+
+    ],
+
+
+    gallery:[
+
+        ["Images/Projects/Pot/POT.png", "Poster"],
+        // ["PT","Gameplay"],
+
+        // ["25","2.5D Camera"],
+
+        // ["UI","In-Game UI"],
+
+        // ["3D","3D Main Menu"],
+
+        // ["SV","Save / Load System"]
+
+    ]
+},
+
+
+/* =========================================================
+   06 — VR SIMULATION PROJECTS
+========================================================= */
+
+{
+    id:"vr-simulations",
+
+    title:"VR Simulation Projects",
+
+    short:"VR",
+
+    status:"Completed",
+
+    type:"Educational VR",
+
+    role:"VR Developer",
+
+    lookLink:"https://drive.google.com/file/d/1HbCpGX_b4m4nov_2Zq1jyLFDr53ftqio/view?usp=sharing",
+
+    summary:
+    "Developed interactive VR walkthrough experiences for educational institutions, including Sona College Campus VR, Sona MBA Hostel VR, and SVPS School VR.",
+
+    lead:
+    "These projects focused on creating interactive VR walkthroughs for educational institutions, allowing users to explore campus and facility environments through immersive navigation. I worked on real-time environments, VR navigation, 3D assets, and optimization for standalone VR hardware.",
+
+
+    challenge:[
+
+        "Creating realistic and interactive educational environments in VR.",
+
+        "Building intuitive navigation for users unfamiliar with VR.",
+
+        "Optimizing real-time environments for standalone VR hardware.",
+
+        "Creating and integrating 3D assets suitable for immersive walkthroughs."
+
+    ],
+
+
+    solutions:[
+
+        "I developed interactive VR walkthrough environments for Sona College Campus, Sona MBA Hostel, and SVPS School.",
+
+        "The projects included interactive navigation, optimized real-time environments, and 3D assets created and prepared using Blender."
+
+    ],
+
+
+    process:[
+
+        "Analyzed architectural layouts and environment requirements.",
+
+        "Created and optimized 3D environment assets.",
+
+        "Developed interactive VR navigation.",
+
+        "Integrated environments into the VR experience.",
+
+        "Optimized real-time assets and scenes for Meta Quest.",
+
+        "Tested navigation and performance across VR environments."
+
+    ],
+
+
+    technologies:[
+
+        "VR",
+
+        "Meta Quest",
+
+        "Unreal Engine",
+
+        "Blender",
+
+        "3D Modeling",
+
+        "Real-Time Optimization"
+
+    ],
+
+
+    gallery:[
+    ["Images/Projects/VR/Front View.jpg", "Front View"],
+    ["Images/Projects/VR/Lib2.jpg", "Library"],
+    ["Images/Projects/VR/Library.jpg", "Library Environment"],
+    ["Images/Projects/VR/Roon Interior.jpg", "Room Interior"],
+    ["Images/Projects/VR/scl Outer.jpg", "School Exterior"],
+    ["Images/Projects/VR/SonaVR.jpg", "Sona VR"],
+    ["Images/Projects/VR/Toilet.jpg", "Toilet Environment"]
+]
+}
+
+];
+
+
+/* =========================================================
+   URL PARAMETERS
+========================================================= */
+
+const params =
+    new URLSearchParams(location.search);
+
+let activeId =
+    params.get("project") || "unseen";
+
+
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
+
+const nav =
+    document.getElementById("projectNav");
+
+const container =
+    document.getElementById("projectContainer");
+
+
+/* =========================================================
+   CREATE PROJECT
+========================================================= */
+
+function makeProject(project){
+
+    const section =
+        document.createElement("section");
+
+    section.className =
+        "project-section";
+
+    section.id =
+        project.id;
+
+
+    section.innerHTML = `
+
+        <div class="layout">
+
+
+            <!-- =========================================
+                 MAIN CONTENT
+            ========================================== -->
+
+            <div class="content">
+
+
+                <!-- LEAD -->
+
+                <p class="lead">
+                    ${project.lead}
+                </p>
+
+
+                <!-- =====================================
+                     MEDIA GALLERY
+                ====================================== -->
+
+                <div class="project-block">
+
+                    <h2 class="section-title">
+                        Media Gallery
+                    </h2>
+
+                    <div class="rule"></div>
+
+
+                                            <div class="gallery-track">
+
+                                ${project.gallery.map(
+                                    (item,index)=>`
+
+                                    <div class="gallery-card">
+
+                                        <img
+                                            src="${item[0]}"
+                                            alt="${item[1]}"
+                                            loading="lazy"
+                                        >
+
+                                        <div class="gallery-caption">
+                                            ${String(index+1).padStart(2,"0")}
+                                            —
+                                            ${item[1]}
+                                        </div>
+
+                                    </div>
+
+                                `).join("")}
+
+                            </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     THE CHALLENGE
+                ====================================== -->
+
+                <div class="project-block">
+
+                    <h2 class="section-title">
+                        The Challenge
+                    </h2>
+
+                    <div class="rule"></div>
+
+
+                    <ul class="content-list">
+
+                        ${project.challenge.map(
+                            item=>`
+
+                            <li>
+                                ${item}
+                            </li>
+
+                        `).join("")}
+
+                    </ul>
+
+                </div>
+
+
+                <!-- =====================================
+                     TECHNICAL SOLUTIONS
+                ====================================== -->
+
+                <div class="project-block">
+
+                    <h2 class="section-title">
+                        Technical Solutions
+                    </h2>
+
+                    <div class="rule"></div>
+
+
+                    ${project.solutions.map(
+                        item=>`
+
+                        <p class="body-text">
+                            ${item}
+                        </p>
+
+                    `).join("")}
+
+                </div>
+
+
+                <!-- =====================================
+                     DEVELOPMENT PROCESS
+                ====================================== -->
+
+                <div class="project-block">
+
+                    <h2 class="section-title">
+                        Development Process
+                    </h2>
+
+                    <div class="rule"></div>
+
+
+                    <ol class="content-list ordered">
+
+                        ${project.process.map(
+                            item=>`
+
+                            <li>
+                                ${item}
+                            </li>
+
+                        `).join("")}
+
+                    </ol>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 SIDEBAR
+            ========================================== -->
+
+            <aside class="info-card">
+
+
+                <!-- =====================================
+                     HAVE A LOOK
+                ====================================== -->
+
+                ${project.lookLink ? `
+                <a
+                    href="${project.lookLink}"
+                    class="look-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <span>
+                        Have a look
+                    </span>
+
+                    <span class="look-arrow">
+                        ↗
+                    </span>
+
+                </a>` : ""}
+
+
+                <!-- =====================================
+                     ROLE
+                ====================================== -->
+
+                <div class="info-group">
+
+                    <div class="label">
+                        Role
+                    </div>
+
+                    <div class="value">
+                        ${project.role}
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     TECHNOLOGIES
+                ====================================== -->
+
+                <div class="info-group">
+
+                    <div class="label">
+                        Technologies
+                    </div>
+
+
+                    <div class="tags">
+
+                        ${project.technologies.map(
+                            tech=>`
+
+                            <span class="tag">
+                                ${tech}
+                            </span>
+
+                        `).join("")}
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     STATUS
+                ====================================== -->
+
+                <div class="info-group">
+
+                    <div class="label">
+                        Status
+                    </div>
+
+                    <div class="status">
+                        ${project.status}
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     PROJECT TYPE
+                ====================================== -->
+
+                <div class="info-group">
+
+                    <div class="label">
+                        Project Type
+                    </div>
+
+                    <div class="value">
+                        ${project.type}
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+
+        <!-- =============================================
+             PREVIOUS / NEXT
+        ============================================== -->
+
+        <div class="next">
+
+            <button
+                onclick="previousProject()"
+            >
+                ← Previous Project
+            </button>
+
+
+            <button
+                onclick="nextProject()"
+            >
+                Next Project →
+            </button>
+
+        </div>
+
+    `;
+
+
+    container.appendChild(section);
+}
+
+
+/* =========================================================
+   CREATE ALL PROJECTS
+========================================================= */
+
+projects.forEach(
+    makeProject
+);
+
+
+/* =========================================================
+   CREATE PROJECT NAVIGATION
+========================================================= */
+
+projects.forEach(project=>{
+
+    const button =
+        document.createElement("button");
+
+
+    button.textContent =
+        project.title;
+
+
+    button.dataset.id =
+        project.id;
+
+
+    button.addEventListener(
+        "click",
+        ()=>{
+            showProject(project.id);
+        }
+    );
+
+
+    nav.appendChild(button);
+
+});
+
+
+/* =========================================================
+   SHOW PROJECT
+========================================================= */
+
+function showProject(
+    id,
+    updateUrl=true
+){
+
+    const project =
+        projects.find(
+            p=>p.id===id
+        ) || projects[0];
+
+
+    activeId =
+        project.id;
+
+
+    /* SHOW ACTIVE PROJECT */
+
+    document
+        .querySelectorAll(".project-section")
+        .forEach(section=>{
+
+            section.classList.toggle(
+                "active",
+                section.id===activeId
+            );
+
+        });
+
+
+    /* ACTIVE NAV BUTTON */
+
+    document
+        .querySelectorAll(".project-nav button")
+        .forEach(button=>{
+
+            button.classList.toggle(
+                "active",
+                button.dataset.id===activeId
+            );
+
+        });
+
+
+    /* HERO STATUS */
+
+    document.getElementById(
+        "heroStatus"
+    ).textContent =
+        project.status;
+
+
+    /* HERO TITLE */
+
+    document.getElementById(
+        "heroTitle"
+    ).textContent =
+        project.title;
+
+
+    /* HERO SUMMARY */
+
+    document.getElementById(
+        "heroSummary"
+    ).textContent =
+        project.summary;
+
+
+    /* PAGE TITLE */
+
+    document.title =
+        `${project.title} – ${project.type} | Karthi, Game Developer`;
+
+    document.getElementById("metaDescription").content =
+        project.summary;
+
+    document.getElementById("canonicalLink").href =
+        `https://karthikeyan078.github.io/DevPortfolio/project.html?project=${project.id}`;
+
+
+    /* UPDATE URL */
+
+    if(updateUrl){
+
+        history.replaceState(
+            null,
+            "",
+            `project.html?project=${project.id}`
+        );
+
+    }
+
+
+    /* SCROLL TO TOP */
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   PREVIOUS PROJECT
+========================================================= */
+
+function previousProject(){
+
+    const index =
+        projects.findIndex(
+            p=>p.id===activeId
+        );
+
+
+    const nextIndex =
+        (index - 1 + projects.length)
+        % projects.length;
+
+
+    showProject(
+        projects[nextIndex].id
+    );
+
+}
+
+
+/* =========================================================
+   NEXT PROJECT
+========================================================= */
+
+function nextProject(){
+
+    const index =
+        projects.findIndex(
+            p=>p.id===activeId
+        );
+
+
+    const nextIndex =
+        (index + 1)
+        % projects.length;
+
+
+    showProject(
+        projects[nextIndex].id
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+showProject(
+    activeId,
+    false
+);
+
+</script>
+
+</body>
+</html>
